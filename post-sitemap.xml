@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://poul.kr/2022/04/11/ros-ceres-pcl/</loc>
+        <lastmod>2022-04-11T06:05:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://poul.kr/2022/04/07/20220407_github-upload/</loc>
         <lastmod>2022-04-07T07:38:51.000Z</lastmod>
         <changefreq>weekly</changefreq>

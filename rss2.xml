@@ -9,8 +9,35 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Thu, 07 Apr 2022 07:38:51 GMT</pubDate>
+    <pubDate>Mon, 11 Apr 2022 06:05:07 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>ros_ceres_pcl 패키지</title>
+      <link>https://poul.kr/2022/04/11/ros-ceres-pcl/</link>
+      <guid>https://poul.kr/2022/04/11/ros-ceres-pcl/</guid>
+      <pubDate>Mon, 11 Apr 2022 06:05:07 GMT</pubDate>
+      
+      <description>&lt;p&gt;      &lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>      </p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1><p>ROS1만 주구장창 하는게 맞나싶긴 하지만</p><p>일단 빨리빨리 할수있는걸 하는게 맞는 듯. ROS2도 빨리 플젝하나 해버려야하는데..</p><p>SLAM에서 중요한 부분이 PCL 라이브러리를 추가해서 포인트클라우드를 조금 만지작 거려야 하고</p><p>ceres solver 활용해서 loop closure를 구현해야 한다. 그러니 이 두개를 ROS에서 사용해야 한다.</p><h1 id="깃허브-올리기"><a href="#깃허브-올리기" class="headerlink" title="깃허브 올리기"></a>깃허브 올리기</h1><p>깃허브에 기존 패키지 올리기를 통해서 이번 패키지도 추가해서 한번 올려보았다.</p><p><a href="https://poul.kr/2022/04/07/20220407_github-upload">깃허브에 이전에 작성된 코드를 올리는 방법</a></p><p>이번 패키지는 아래 블로그를 참조하여 작성하였다. 매우 감사한 블로그. 다 정독할 듯</p><p><a href="https://limhyungtae.github.io/">Hyungtae Lim</a></p><p>여튼 아래와 같이 crese solver와 pcl 라이브러리 추가해서 ros에서 빨리 간단한 SLAM을 구현해봐야함..</p><p>할일이 많다.</p><p><a href="https://github.com/robotjuhwan/ros_ceres_pcl_template.git">ros_ceres_pcl_template</a></p>]]></content:encoded>
+      
+      
+      <category domain="https://poul.kr/categories/Study/">Study</category>
+      
+      <category domain="https://poul.kr/categories/Study/SLAM/">SLAM</category>
+      
+      
+      <category domain="https://poul.kr/tags/SLAM/">SLAM</category>
+      
+      <category domain="https://poul.kr/tags/ROS/">ROS</category>
+      
+      
+      <comments>https://poul.kr/2022/04/11/ros-ceres-pcl/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>깃허브에 이전에 작성된 코드를 올리는 방법</title>
