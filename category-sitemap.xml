@@ -9,6 +9,13 @@
 
 
     <url>
+        <loc>https://poul.kr/categories/Chat/</loc>
+        <lastmod>2022-05-01T15:02:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://poul.kr/categories/Study/SLAM/</loc>
         <lastmod>2022-04-11T06:05:07.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,13 +32,6 @@
     <url>
         <loc>https://poul.kr/categories/Study/Github/</loc>
         <lastmod>2022-04-07T07:38:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://poul.kr/categories/Chat/</loc>
-        <lastmod>2022-04-06T06:27:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
