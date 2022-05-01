@@ -9,8 +9,27 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Mon, 11 Apr 2022 06:05:07 GMT</pubDate>
+    <pubDate>Sun, 01 May 2022 15:02:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>move_lab</title>
+      <link>https://poul.kr/2022/05/02/20220502_move-lab/</link>
+      <guid>https://poul.kr/2022/05/02/20220502_move-lab/</guid>
+      <pubDate>Sun, 01 May 2022 15:02:13 GMT</pubDate>
+      
+      <description>&lt;p&gt;      &lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>      </p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1>]]></content:encoded>
+      
+      
+      
+      
+      <comments>https://poul.kr/2022/05/02/20220502_move-lab/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>ros_ceres_pcl 패키지</title>

@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://poul.kr/2022/05/02/20220502_move-lab/</loc>
+        <lastmod>2022-05-01T15:02:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://poul.kr/2022/04/11/ros-ceres-pcl/</loc>
         <lastmod>2022-04-11T06:05:07.000Z</lastmod>
         <changefreq>weekly</changefreq>
