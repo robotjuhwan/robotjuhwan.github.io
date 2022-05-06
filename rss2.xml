@@ -9,8 +9,35 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Sun, 01 May 2022 15:47:43 GMT</pubDate>
+    <pubDate>Fri, 06 May 2022 09:07:51 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Rosbag으로 image의 compressed만 record 했을 때, 이를 활용하기</title>
+      <link>https://poul.kr/2022/05/06/20220506-compressed/</link>
+      <guid>https://poul.kr/2022/05/06/20220506-compressed/</guid>
+      <pubDate>Fri, 06 May 2022 09:07:51 GMT</pubDate>
+      
+      <description>&lt;p&gt;      &lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>      </p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1><p>ROS에서 토픽들을 record할 때 이미지들을 계속적으로 rosbag에 하게되면, 생각보다 용량이 어마어마해지곤 한다.</p><p>특히 Jetson TX2같은 단독 SBC는 용량도 턱없이 없어서, 실험데이터를 레코드하기 힘들때가 많다</p><p>그래서 어쩔 수 없이, 이미지 해상도를 버리고서라도 compressed 이미지만 rosbag record 하기도 하는데</p><p>이를 불러오면 기존의 image transport에서 읽어오는게 조금 편하지 않다</p><p>그냥 subscribe를 &#x2F;compressed를 뒤에 붙여주면 될 줄 알았더니 그렇지 않다</p><p>그냥 어떤 rosrun을 실행할 때, 다음과 같은 옵션만 붙여주면 된다.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_image_transport:=compressed</span><br></pre></td></tr></table></figure><p>이번에 TF 구하려고 붙여놓은 카메라 영상을 compressed로 녹화했는데</p><p>하.. Aruco 인식이 안될 정도의 해상도다.</p><p>다음 시험때는 Aruco 마커좀 키우고 현장에서 바로 좌표 인식해서 좌표만 rosbag 해야겠다.</p>]]></content:encoded>
+      
+      
+      <category domain="https://poul.kr/categories/Study/">Study</category>
+      
+      <category domain="https://poul.kr/categories/Study/ROS/">ROS</category>
+      
+      
+      <category domain="https://poul.kr/tags/Underwater/">Underwater</category>
+      
+      <category domain="https://poul.kr/tags/ROS/">ROS</category>
+      
+      
+      <comments>https://poul.kr/2022/05/06/20220506-compressed/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>ROS1 rviz에서 로봇의 이동경로를 표시하는 방법</title>
