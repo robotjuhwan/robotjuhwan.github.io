@@ -9,22 +9,22 @@
 
 
     <url>
+        <loc>https://poul.kr/categories/Chat/</loc>
+        <lastmod>2023-02-20T06:40:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://poul.kr/categories/Study/ROS/</loc>
-        <lastmod>2022-05-06T09:07:51.000Z</lastmod>
+        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://poul.kr/categories/Study/</loc>
-        <lastmod>2022-05-06T09:07:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://poul.kr/categories/Chat/</loc>
-        <lastmod>2022-05-01T15:02:13.000Z</lastmod>
+        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

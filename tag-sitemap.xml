@@ -3,22 +3,36 @@
 
 
     <url>
+        <loc>https://poul.kr/tags/Chat/</loc>
+        <lastmod>2023-02-20T06:40:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://poul.kr/tags/3DM-GX5/</loc>
+        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://poul.kr/tags/Sensor/</loc>
+        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://poul.kr/tags/ROS/</loc>
-        <lastmod>2022-05-06T09:07:51.000Z</lastmod>
+        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://poul.kr/tags/Underwater/</loc>
-        <lastmod>2022-05-06T09:07:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://poul.kr/tags/Chat/</loc>
-        <lastmod>2022-05-01T15:02:13.000Z</lastmod>
+        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

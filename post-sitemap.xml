@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://poul.kr/2023/02/20/20230220-restart/</loc>
+        <lastmod>2023-02-20T06:40:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://poul.kr/2022/05/12/20220512-3dmgx5/</loc>
+        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://poul.kr/2022/05/06/20220506-compressed/</loc>
         <lastmod>2022-05-06T09:07:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
