@@ -9,8 +9,33 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Mon, 20 Feb 2023 06:40:55 GMT</pubDate>
+    <pubDate>Tue, 21 Feb 2023 01:10:38 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>리액트를 시작하다.</title>
+      <link>https://poul.kr/2023/02/21/20230221-react-start/</link>
+      <guid>https://poul.kr/2023/02/21/20230221-react-start/</guid>
+      <pubDate>Tue, 21 Feb 2023 01:10:38 GMT</pubDate>
+      
+      <description>&lt;p&gt;리액트를 시작하다.&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>리액트를 시작하다.</p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1><p>리액트를 왜 하는가</p><p>항상 임베디드쪽을 하면서</p><p>node.js에 대한 약간의 동경이 생겼었다. 조금은 할 수 있어야하지 않을까?</p><p>흔히 개발자라고 하면 다양한 종류가 있겠지만, 그 중에서도 웹 개발자가 굉장히 많을 것이다.</p><p>약간 트렌디한 느낌. 맥북으로 코딩할 수 있는 느낌</p><p>조금 만들어보고 싶은 사이트도 있고하니, node.js나 react.js를 좀 체험해봐야겠다.</p><h1 id="첫걸음"><a href="#첫걸음" class="headerlink" title="첫걸음"></a>첫걸음</h1><p>일단 요즘 일상은 대부분 ChatGPT로 시작한다.</p><p><img src="https://user-images.githubusercontent.com/11154693/220223164-1b1494ee-9251-421e-8fa1-2a0acc39d45d.png" alt="mspaint"></p><p>일단 이친구 말로는 React 공식문서가 잘 되어있으니, 문서를 읽고 튜토리얼을 따라해보라고 한다.</p><p>강의도 있다고 하는데, 유투브에 아마 많이 있겠지? 일단 react 사이트에서 살펴보는 걸로</p>]]></content:encoded>
+      
+      
+      <category domain="https://poul.kr/categories/Study/">Study</category>
+      
+      <category domain="https://poul.kr/categories/Study/React-js/">React.js</category>
+      
+      
+      <category domain="https://poul.kr/tags/React-js/">React.js</category>
+      
+      
+      <comments>https://poul.kr/2023/02/21/20230221-react-start/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>블로그를 다시 시작합니다.</title>

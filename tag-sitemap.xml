@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://poul.kr/tags/React-js/</loc>
+        <lastmod>2023-02-21T01:10:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://poul.kr/tags/Chat/</loc>
         <lastmod>2023-02-20T06:40:55.000Z</lastmod>
         <changefreq>weekly</changefreq>
