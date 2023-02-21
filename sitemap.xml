@@ -8,6 +8,11 @@
     </sitemap>
 
     <sitemap>
+        <loc>https://poul.kr/page-sitemap.xml</loc>
+        <lastmod>2023-02-21T05:00:45.355Z</lastmod>
+    </sitemap>
+
+    <sitemap>
         <loc>https://poul.kr/category-sitemap.xml</loc>
         <lastmod>2023-02-21T01:10:38.000Z</lastmod>
     </sitemap>
