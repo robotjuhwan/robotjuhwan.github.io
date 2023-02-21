@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://poul.kr/tags/Web/</loc>
+        <lastmod>2023-02-21T06:22:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://poul.kr/tags/%ED%8F%AC%ED%95%AD/</loc>
         <lastmod>2023-02-21T04:26:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
