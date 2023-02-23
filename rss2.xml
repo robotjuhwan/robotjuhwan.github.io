@@ -27,8 +27,12 @@
       
       <category domain="https://poul.kr/categories/Food/">Food</category>
       
+      <category domain="https://poul.kr/categories/Food/%ED%8F%AC%ED%95%AD/">포항</category>
+      
       
       <category domain="https://poul.kr/tags/Food/">Food</category>
+      
+      <category domain="https://poul.kr/tags/%ED%8F%AC%ED%95%AD/">포항</category>
       
       
       <comments>https://poul.kr/2023/02/23/20230223-pizzeria-moon/#disqus_thread</comments>
