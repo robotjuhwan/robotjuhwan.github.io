@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>00_laser scan SLAM - PouL</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="PouL"><meta name="msapplication-TileImage" content="/img/small_logo.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PouL"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="포울 블로그"><meta property="og:type" content="blog"><meta property="og:title" content="00_laser scan SLAM"><meta property="og:url" content="https://poul.kr/2022/04/06/00-laser-scan-slam/"><meta property="og:site_name" content="PouL"><meta property="og:description" content="포울 블로그"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://poul.kr/img/poul_logo.jpg"><meta property="article:published_time" content="2022-04-06T08:31:20.000Z"><meta property="article:modified_time" content="2022-04-07T05:00:20.000Z"><meta property="article:author" content="PouL"><meta property="article:tag" content="SLAM"><meta property="article:tag" content="Underwater"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/poul_logo.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://poul.kr/2022/04/06/00-laser-scan-slam/"},"headline":"00_laser scan SLAM","image":["https://poul.kr/img/poul_logo.jpg"],"datePublished":"2022-04-06T08:31:20.000Z","dateModified":"2022-04-07T05:00:20.000Z","author":{"@type":"Person","name":"PouL"},"publisher":{"@type":"Organization","name":"PouL","logo":{"@type":"ImageObject","url":"https://poul.kr/img/poul_letter.svg"}},"description":"title: 00_laser scan SLAM"}</script><meta name="naver-site-verification" content="1952a8d7d5081448cd5118063be73194d9003046"><link rel="canonical" href="https://poul.kr/2022/04/06/00-laser-scan-slam/"><link rel="icon" href="/img/small_logo.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=UA-90995482-1" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-90995482-1');</script><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454862779387141" crossorigin="anonymous"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/rss2.xml" title="PouL" type="application/rss+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-9 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time datetime="2022-04-06T08:31:20.000Z" title="4/6/2022, 5:31:20 PM">2022-04-06</time>&nbsp;게시 됨</span><span class="level-item"><time datetime="2022-04-07T05:00:20.000Z" title="4/7/2022, 2:00:20 PM">2022-04-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Study/">Study</a><span> / </span><a class="link-muted" href="/categories/Study/SLAM/">SLAM</a></span><span class="level-item">9분안에 읽기 (약 1381 단어)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>회 방문</span></div></div><h1 class="title is-3 is-size-4-mobile">00_laser scan SLAM</h1><div class="content"><p>title: 00_laser scan SLAM</p>
+<span id="more"></span>
+<h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1><p>수중에서는 3차원 측정을 위한 센서가 매우 부족하다.</p>
+<p>스테레오 비전을 쓰기도 하지만, 워낙 피쳐가 부족한 환경이라서 잘 되는지는 의문</p>
+<p>Lidar 같은 장비나 리얼센스 같은 장비가 수중용이 없다.. 돈이 안되서 그런가</p>
+<p>보통 이러한 장비들은 육상용의 경우 사람 눈에 영향을 줄 수 있어서 매우 제한적인 파워로 극도의 성능을 뽑아낸다.</p>
+<p>수중에는 사람도 없으니까 파워 왕창 높히면 장비 사용할 수 있을텐데.. 아쉽</p>
+<p>수중생물에 영향을 줄 수 있어 환경단체의 반대를 받을 수 있다. 조심</p>
+<h1 id="Line-Laser-scan"><a href="#Line-Laser-scan" class="headerlink" title="Line Laser scan"></a>Line Laser scan</h1><p>수중에서는 고전적일 수 있는 찐 레이저를 쓴다. 왜 찐 레이저라고 했냐면, 눈에 보이는 레이저이기 때문.</p>
+<p>보통 육상에서 쓰는 대부분의 레이저 장비들은 가시광선이 아니라서 눈에 보이지 않는다.</p>
+<p>하지만 수중에서는 그런거 없고 파워풀하게 녹색이나 파란색 레이저를 쓴다.</p>
+<p>빨간 레이저는 쓰지 않는다. 빨간색은 수중에서 감쇄가 심하기 때문이다.</p>
+<p>그리고 수중 카메라로 색상 인식을 해서 그 laser 부분의 3차원 위치정보를 얻는다.</p>
+<p>매우 고전적이지만 확실한 방법이다.</p>
+<p>(수중에서 Structured Light를 이용해서 한번에 depth를 얻는 장비도 구현되어 있더라. 없으니까 패스)</p>
+<p>나는 이러한 laser scan 방법론을 활용하여 수중에서 간단하게 SLAM을 구현해보고자 한다.</p>
+<h1 id="고찰"><a href="#고찰" class="headerlink" title="고찰"></a>고찰</h1><p>SLAM은 흔히 camera 기반 슬램이 있고 라이다나 뎁스 센서로 이루어지는 SLAM이 있고, 방식 등으로는 여러가지가 있지만 Graph based SLAM 방식을 많이들 쓴다</p>
+<p>Pose Graph SLAM 이라고도 하던데, 간단하게 말하면 시간에 따라서 Robot의 Pose들을 시리얼하게 딱딱 이어 묶고는 그 사이의 Transformation을 각각 계산해둔다.</p>
+<p>그러면 일자로 이어진 그래프?가 될 것인데, Loop Closure가 발생하면 이를 보정하기 위해서 각각의 Pose들을 최적화시키게 된다. 이때 Pose는 Position과 Attitude를 포함한 Robot의 정보다.</p>
+<p>쉽게말해서 원형으로 로봇이 움직인다고 했을 때 출발한 지점으로 Robot이 돌아오게 되면, 출발지의 Pose와 지금껏 Robot이 추정하여 현재 있을 것이라고 예측했던 위치가 알맞지 않을 것이다 (오차가 계속해서 누적되었기 때문).</p>
+<p>이를 바로잡아 주는 과정이 Loop Closure이다.</p>
+<p>SLAM 영상들을 보면 지도가 만들어지다가 갑자기 뚝뚝 일부의 지도들이 갑작스럽게 어디론가 딱 붙는다던지 하는 모습을 보여주는데, 그게 Loop Closure이다.</p>
+<p>Loop Closure과정을 보면 일부의 생선된 지도들이 딱딱 알맞게 붙어들어가게 되는데, 이는 생각보다 간단한 과정으로 해결가능하다 (물론 그 과정 자체의 계산은 매우 복잡하지만).</p>
+<p>Solver를 사용하면 이를 풀어낼 수 있다. Solver가 무었이냐 하면 쉽게말하면 연립방정식을 풀어주는 것이다.</p>
+<p>(학부시절에 쓰던 CASIO 공학계산기에도 Solver기능이 있어서 매우 편하게 문제를 풀 수 있었다. 그때 생각해보면 해의 범위를 설정해줘야 해서 이게 왜 필요한가 생각했었는데, Solver의 의미를 알고나니 이해가 된다.)</p>
+<p>여튼 Solver가 Loop Closure에서 작동하는 원리는 간단하다. 우선 Robot의 Pose들이 이어져 있을때, 그 Pose 사이에는 Transform Matrix가 존재한다. 3차원 이동과 회전이 동시에 이루어지는 그 행렬이다. 이를 Edge라고 표현하더라</p>
+<p>여튼 Loop Closure가 시작된 Pose에서 현재의 Pose사이에는 여러차례 알맞은 Edge가 곱해져서 표현이 된다. Edge로써 현재의 Pose가 추정된 것이다.</p>
+<p>이 모든 Edge에 어떠한 미지수를 각각 곱했을 때 현재의 Pose가 시작된 Pose에 가장 가까워질 수 있도록 (거의 일치하도록) 하고 Solver를 활용하여 그 미지수를 구하는 것이다.</p>
+<p>그 미지수를 구하게되면, 실제 그 미지수를 각 Edge에 곱해서 Pose들을 다시 Update하면 지도가 찰싹 붙는 것을 보여줄 수 있는 것이다.</p>
+<p>그래서 이러한 Loop Closure 과정은 일반적으로 컴퓨팅 양이 많기때문에 SLAM 알고리즘에서 Backend 과정으로 분류한다. 가끔 일어나지만 시간을 오래걸리니 조금 뒷단에서 처리하겠다는 느낌</p>
+<p>자연스럽게 Frontend는 실시간으로 현재의 Pose를 추정하여 Node를 구성하는 것이다 (말은 안했지만 Node가 Graph에서 현재의 Pose들을 나타내는 용어임 Graph는 Node와 Edge로 구성되어 있다.)</p>
+<p>자 위 과정을 이해했다면 Pose Graph SLAM을 이해한 것이다. 물론.. 나도 잘 이해한 건지는 모르겠다.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>00_laser scan SLAM</p><p><a href="https://poul.kr/2022/04/06/00-laser-scan-slam/">https://poul.kr/2022/04/06/00-laser-scan-slam/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>PouL</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-04-06</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-04-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="external nofollow noopener noreferrer" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="external nofollow noopener noreferrer" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="external nofollow noopener noreferrer" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/SLAM/">SLAM</a><a class="link-muted mr-2" rel="tag" href="/tags/Underwater/">Underwater</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/04/07/20220407_01-laser-scan-slam/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">01_laser scan SLAM</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/04/06/first-post/"><span class="level-item">블로그를 시작하는 첫 글</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "c6e7b3c3e4ecd35ff48746ab59d7e4cb",
+            repo: "poul_gitalk",
+            owner: "robotjuhwan",
+            clientID: "2e1e58682ba0c33710c0",
+            clientSecret: "62484105d09a5e161057e000757581ccc26fff9a",
+            admin: ["robotjuhwan"],
+            createIssueManually: false,
+            distractionFreeMode: true,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "ko",
+        })
+        gitalk.render('comment-container')</script></div></div></div><!--!--><div class="column column-right is-3-tablet is-3-desktop is-3-widescreen  order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#잡담"><span class="level-left"><span class="level-item">1</span><span class="level-item">잡담</span></span></a></li><li><a class="level is-mobile" href="#Line-Laser-scan"><span class="level-left"><span class="level-item">2</span><span class="level-item">Line Laser scan</span></span></a></li><li><a class="level is-mobile" href="#고찰"><span class="level-left"><span class="level-item">3</span><span class="level-item">고찰</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Chat/"><span class="level-start"><span class="level-item">Chat</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Food/"><span class="level-start"><span class="level-item">Food</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/Food/%ED%8F%AC%ED%95%AD/"><span class="level-start"><span class="level-item">포항</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Study/"><span class="level-start"><span class="level-item">Study</span></span><span class="level-end"><span class="level-item tag">10</span></span></a><ul><li><a class="level is-mobile" href="/categories/Study/Github/"><span class="level-start"><span class="level-item">Github</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Study/ROS/"><span class="level-start"><span class="level-item">ROS</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Study/SLAM/"><span class="level-start"><span class="level-item">SLAM</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Study/Web/"><span class="level-start"><span class="level-item">Web</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/05/"><span class="level-start"><span class="level-item">5월 2022</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">4월 2022</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time datetime="2023-02-21T06:17:25.000Z">2023-02-21</time></p><p class="title"><a href="/2023/02/21/20230221-html-css/">HTML &amp; CSS 에 대한 기본적인 친밀감</a></p><p class="categories"><a href="/categories/Study/">Study</a> / <a href="/categories/Study/Web/">Web</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time datetime="2023-02-21T04:26:49.000Z">2023-02-21</time></p><p class="title"><a href="/2023/02/21/20230221-hae/">[포항 / 효자동] 해오름 - 소고기전골 | 수제 왕만두</a></p><p class="categories"><a href="/categories/Food/">Food</a> / <a href="/categories/Food/%ED%8F%AC%ED%95%AD/">포항</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time datetime="2023-02-21T01:10:38.000Z">2023-02-21</time></p><p class="title"><a href="/2023/02/21/20230221-react-start/">리액트를 공부해볼까</a></p><p class="categories"><a href="/categories/Study/">Study</a> / <a href="/categories/Study/Web/">Web</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time datetime="2023-02-20T06:40:55.000Z">2023-02-20</time></p><p class="title"><a href="/2023/02/20/20230220-restart/">블로그를 다시 시작합니다.</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time datetime="2022-05-12T07:43:20.000Z">2022-05-12</time></p><p class="title"><a href="/2022/05/12/20220512-3dmgx5/">ROS 시뮬레이터에서 IMU 센서 노이즈 모사하기 - 3DM-GX5 직접 활용</a></p><p class="categories"><a href="/categories/Study/">Study</a> / <a href="/categories/Study/ROS/">ROS</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/3DM-GX5/"><span class="tag">3DM-GX5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Chat/"><span class="tag">Chat</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Food/"><span class="tag">Food</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Mbed/"><span class="tag">Mbed</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ROS/"><span class="tag">ROS</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React-js/"><span class="tag">React.js</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SLAM/"><span class="tag">SLAM</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Sensor/"><span class="tag">Sensor</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Underwater/"><span class="tag">Underwater</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8F%AC%ED%95%AD/"><span class="tag">포항</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a><p class="is-size-7"><span>&copy; 2023 PouL</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a><br><span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv">0</span>명의 사용자가 방문 함</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="external nofollow noopener noreferrer" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="external nofollow noopener noreferrer" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="external nofollow noopener noreferrer" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="입력 하세요..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"입력 하세요...","untitled":"(제목 없음)","posts":"포스트","pages":"페이지","categories":"카테고리","tags":"태그"});
+        });</script></body></html>
