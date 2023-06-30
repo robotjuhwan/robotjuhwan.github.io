@@ -13,20 +13,16 @@
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>20230630_lab_category</title>
+      <title>연구실 자료 정리 일정</title>
       <link>https://poul.kr/2023/06/30/20230630-lab-category/</link>
       <guid>https://poul.kr/2023/06/30/20230630-lab-category/</guid>
       <pubDate>Fri, 30 Jun 2023 03:06:31 GMT</pubDate>
       
-        
-        
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-&lt;h1 id=&quot;잡담&quot;&gt;&lt;a href=&quot;#잡담&quot; class=&quot;headerlink&quot; title=&quot;잡담&quot;&gt;&lt;/a&gt;잡담&lt;/h1&gt;</description>
-        
+      <description>&lt;p&gt;연구실 자료 정리 일정&lt;/p&gt;</description>
       
       
       
-      <content:encoded><![CDATA[<span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1>]]></content:encoded>
+      <content:encoded><![CDATA[<p>연구실 자료 정리 일정</p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1><p>연구실을 나가며 지금까지 남긴 자료를 정리하고 남기기 위한 카테고리이다.</p><p>생활 중간에 하드가 한번 뻑나서 복구를 한탓에 중간중간 미싱링크가 있어 보인다.</p><p>그래도 한번 연차별로 하드디스크 목록을 정리한번 해보고, 남겨야하는 자료도 찾아놓아야겠다.</p><p>또한 회로 구성 및 PADS PCB 제작법 등에대한 자료를 정리하고자 한다.</p><h1 id="하드-정리"><a href="#하드-정리" class="headerlink" title="하드 정리"></a>하드 정리</h1><p>하드에는 크게 백업했던 자료들, 연차별 연구실자료, 개인자료로 구성되어 있다.</p><p>연차별로 하드내용을 보다보면 출판활동과 무관하여 묻힌 연구자료들이 있는 것 같다. 관련 내용을 올려서 정리해두면 좋을 듯</p><h1 id="회로-스터디"><a href="#회로-스터디" class="headerlink" title="회로 스터디"></a>회로 스터디</h1><p>7~8월 중에 회로 구성하는 법에대해서 간략하게 세미나를 준비할 예정이다.</p><p>뱀장어 과제할때 구성한 회로를 중심으로 설명하고, PCB 뜨는 법을 정리해볼 예정</p><p>PCB 뜨는 법은 일련의 과정을 영상으로 남겨두면 될 것 같다.</p>]]></content:encoded>
       
       
       <category domain="https://poul.kr/categories/Study/">Study</category>
@@ -392,7 +388,7 @@
       
       
       
-      <content:encoded><![CDATA[<p>01_laser scan SLAM</p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1><p>내가 가진 상황에 맞게 수중로봇에서 Pose Graph SLAM를 빠르게 구현해서 실험까지 해내야 한다. 시뮬레이터도 있고 수조실험 일정도 잡혔다.</p><p>그 전에 해야할 일의 목록을 정리해보면</p><ul><li>시뮬레이션에서 목표한 움직임대로 수행하여 rosbag 제작</li><li>rosbag에 대하여 pose graph slam을 활용한 자체 알고리즘 제작&#x2F;테스트</li><li>작은 수조에서 bricks들에 대한 dataset 제작, YOLOv4 학습, Laser Scan test</li><li>수조 실험 수행 (4월 18일 주)</li><li>논문 초안 작성 (4월 중)</li><li>논문 투고 (5월 초)</li></ul><p>지금까지 되어있는 부분 목록</p><ul><li>논문 제목 Underwater Recursive Rotational SLAM 이라고 URR-SLAM으로 이름 지음. 시작이 반이다.</li><li>로봇 시뮬레이터. 매번 고맙게 활용하는 UUV Sim.. 내 로봇을 기반으로 이식해두어서 언제든지 간이 실험을 수행해볼 수 있음</li><li>시뮬레이터 맵 생성. 아래와 같은 전략이다. 벽돌 모형도 실제 크기와 같이 구현해두고, 4가지 부분을 사각형으로 이동해서 Loop Closure를 보여줄 듯<br><img src="https://user-images.githubusercontent.com/11154693/162125870-db29424d-f838-459e-b389-3abfe465e297.png" alt="image"></li><li>Bricks들 YOLOv4 학습. 4가지 종류의 Bricks를 4가지 구분해서 125장 정도씩 data set 구성하고 일반 YOLOv4에 학습했다. 실제 로봇에서는 Tiny 모델로 써야함.</li><li>Laser Scan Sensor를 Gazebo에서 구현된 값 그대로 활용하지 않고, 로봇 앞부분의 Camera로 Image 읽고 다시 3차원 laser scan으로 계산하도록 Vision 처리하는 코드 작성. 실제 로봇에서 해당 node Package를 사용해야 하기 떄문에 구조상 미리 작성</li></ul><p>뭔가 많이 한 것 같지만 개뿔 pose graph slam 구현하는 부분이 제일 중요하고 어렵다. 다른건 그냥 시간만 있으면 되는데 이 부분은 머리싸매고 차근차근 빠르게 해내야 한다.</p><p>우선 SLAM의 Backend 부분은 어찌저찌 ceres solver 활용하면 가능할 것 같아서 감이 슬쩍 잡히는데</p><p>Frontend 부분은 map 구성도 그렇고, Line Laser Matching도 그렇고 해야할 부분이 많다.</p><p>할게 많을때는 할 수 있는 것부터 하라고 했다. 그래서 rosbag부터 만들고, 그걸로 반복반복 할 수 있도록 해야겠다.</p><h1 id="고찰"><a href="#고찰" class="headerlink" title="고찰"></a>고찰</h1><p>아쉽게도.. 이번달에 완성해서 투고까지가 목표이므로, 투고 이후에 Laser Scan SLAM 부분을 다시 작성해야 겠다.</p>]]></content:encoded>
+      <content:encoded><![CDATA[<p>01_laser scan SLAM</p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1><p>내가 가진 상황에 맞게 수중로봇에서 Pose Graph SLAM를 빠르게 구현해서 실험까지 해내야 한다. 시뮬레이터도 있고 수조실험 일정도 잡혔다.</p><p>그 전에 해야할 일의 목록을 정리해보면</p><ul><li>시뮬레이션에서 목표한 움직임대로 수행하여 rosbag 제작</li><li>rosbag에 대하여 pose graph slam을 활용한 자체 알고리즘 제작&#x2F;테스트</li><li>작은 수조에서 bricks들에 대한 dataset 제작, YOLOv4 학습, Laser Scan test</li><li>수조 실험 수행 (4월 18일 주)</li><li>논문 초안 작성 (4월 중)</li><li>논문 투고 (5월 초)</li></ul><p>지금까지 되어있는 부분 목록</p><ul><li>논문 제목 Underwater Recursive Rotational SLAM 이라고 URR-SLAM으로 이름 지음. 시작이 반이다.</li><li>로봇 시뮬레이터. 매번 고맙게 활용하는 UUV Sim.. 내 로봇을 기반으로 이식해두어서 언제든지 간이 실험을 수행해볼 수 있음</li><li>시뮬레이터 맵 생성. 아래와 같은 전략이다. 벽돌 모형도 실제 크기와 같이 구현해두고, 4가지 부분을 사각형으로 이동해서 Loop Closure를 보여줄 듯<br><img src="https://user-images.githubusercontent.com/11154693/162125870-db29424d-f838-459e-b389-3abfe465e297.png" alt="image"></li><li>Bricks들 YOLOv4 학습. 4가지 종류의 Bricks를 4가지 구분해서 125장 정도씩 data set 구성하고 일반 YOLOv4에 학습했다. 실제 로봇에서는 Tiny 모델로 써야함.</li><li>Laser Scan Sensor를 Gazebo에서 구현된 값 그대로 활용하지 않고, 로봇 앞부분의 Camera로 Image 읽고 다시 3차원 laser scan으로 계산하도록 Vision 처리하는 코드 작성. 실제 로봇에서 해당 node Package를 사용해야 하기 떄문에 구조상 미리 작성</li></ul><p>뭔가 많이 한 것 같지만 개뿔 pose graph slam 구현하는 부분이 제일 중요하고 어렵다. 다른건 그냥 시간만 있으면 되는데 이 부분은 머리싸매고 차근차근 빠르게 해내야 한다.</p><p>우선 SLAM의 Backend 부분은 어찌저찌 ceres solver 활용하면 가능할 것 같아서 감이 슬쩍 잡히는데</p><p>Frontend 부분은 map 구성도 그렇고, Line Laser Matching도 그렇고 해야할 부분이 많다.</p><p>할게 많을때는 할 수 있는 것부터 하라고 했다. 그래서 rosbag부터 만들고, 그걸로 반복반복 할 수 있도록 해야겠다.</p><h1 id="고찰"><a href="#고찰" class="headerlink" title="고찰"></a>고찰</h1><p>아쉽게도.. 이번달에 완성해서 투고까지가 목표이므로, 투고 이후에 Laser Scan SLAM 부분을 다시 작성해야 겠다.</p><h1 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h1><p>로봇의 DVL이 고장나서.. 프로젝트는 중단..</p>]]></content:encoded>
       
       
       <category domain="https://poul.kr/categories/Study/">Study</category>
