@@ -9,8 +9,37 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Mon, 27 Feb 2023 09:19:34 GMT</pubDate>
+    <pubDate>Fri, 30 Jun 2023 03:06:31 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>20230630_lab_category</title>
+      <link>https://poul.kr/2023/06/30/20230630-lab-category/</link>
+      <guid>https://poul.kr/2023/06/30/20230630-lab-category/</guid>
+      <pubDate>Fri, 30 Jun 2023 03:06:31 GMT</pubDate>
+      
+        
+        
+      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;h1 id=&quot;잡담&quot;&gt;&lt;a href=&quot;#잡담&quot; class=&quot;headerlink&quot; title=&quot;잡담&quot;&gt;&lt;/a&gt;잡담&lt;/h1&gt;</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1>]]></content:encoded>
+      
+      
+      <category domain="https://poul.kr/categories/Study/">Study</category>
+      
+      <category domain="https://poul.kr/categories/Study/Lab/">Lab</category>
+      
+      
+      <category domain="https://poul.kr/tags/Lab/">Lab</category>
+      
+      
+      <comments>https://poul.kr/2023/06/30/20230630-lab-category/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>[포항 / 대잠동] 차밭골 24시 감자탕 - 매운 뼈찜</title>

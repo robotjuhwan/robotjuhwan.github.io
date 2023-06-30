@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://poul.kr/2023/06/30/20230630-lab-category/</loc>
+        <lastmod>2023-06-30T03:06:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://poul.kr/2023/02/27/20230227-chagol/</loc>
         <lastmod>2023-02-27T09:19:34.000Z</lastmod>
         <changefreq>weekly</changefreq>
