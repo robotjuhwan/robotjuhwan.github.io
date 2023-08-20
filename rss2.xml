@@ -9,11 +9,36 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Fri, 30 Jun 2023 03:06:31 GMT</pubDate>
+    <pubDate>Fri, 30 Jun 2023 03:54:15 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>연구실 자료 정리 일정</title>
+      <title>01_회로 구성법</title>
+      <link>https://poul.kr/2023/06/30/20230630-lab-circuit-00/</link>
+      <guid>https://poul.kr/2023/06/30/20230630-lab-circuit-00/</guid>
+      <pubDate>Fri, 30 Jun 2023 03:54:15 GMT</pubDate>
+      
+      <description>&lt;p&gt;01_회로 구성법&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>01_회로 구성법</p><span id="more"></span><h1 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h1>]]></content:encoded>
+      
+      
+      <category domain="https://poul.kr/categories/Study/">Study</category>
+      
+      <category domain="https://poul.kr/categories/Study/Lab/">Lab</category>
+      
+      
+      <category domain="https://poul.kr/tags/Lab/">Lab</category>
+      
+      
+      <comments>https://poul.kr/2023/06/30/20230630-lab-circuit-00/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>00_연구실 자료 정리</title>
       <link>https://poul.kr/2023/06/30/20230630-lab-category/</link>
       <guid>https://poul.kr/2023/06/30/20230630-lab-category/</guid>
       <pubDate>Fri, 30 Jun 2023 03:06:31 GMT</pubDate>
