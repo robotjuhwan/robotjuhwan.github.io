@@ -9,22 +9,6 @@
 
 
     <url>
-        <loc>https://poul.kr/2023/06/30/20230630-lab-circuit-00/</loc>
-        <lastmod>2023-06-30T03:54:15.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2023/06/30/20230630-lab-category/</loc>
-        <lastmod>2023-06-30T03:06:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://poul.kr/2023/02/27/20230227-chagol/</loc>
         <lastmod>2023-02-27T09:19:34.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -41,104 +25,8 @@
     </url>
 
     <url>
-        <loc>https://poul.kr/2023/02/21/20230221-html-css/</loc>
-        <lastmod>2023-02-21T06:17:25.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://poul.kr/2023/02/21/20230221-hae/</loc>
         <lastmod>2023-02-21T04:26:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2023/02/21/20230221-react-start/</loc>
-        <lastmod>2023-02-21T01:10:38.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2023/02/20/20230220-restart/</loc>
-        <lastmod>2023-02-20T06:40:55.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/05/12/20220512-3dmgx5/</loc>
-        <lastmod>2022-05-12T07:43:20.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/05/06/20220506-compressed/</loc>
-        <lastmod>2022-05-06T09:07:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/05/02/20220502-trajectory/</loc>
-        <lastmod>2022-05-01T15:47:43.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/05/02/20220502_move-lab/</loc>
-        <lastmod>2022-05-01T15:02:13.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/04/11/ros-ceres-pcl/</loc>
-        <lastmod>2022-04-11T06:05:07.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/04/07/20220407_github-upload/</loc>
-        <lastmod>2022-04-07T07:38:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/04/07/00-ros-mbed-arduino-github/</loc>
-        <lastmod>2022-04-07T05:47:13.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/04/07/20220407_01-laser-scan-slam/</loc>
-        <lastmod>2022-04-07T05:07:30.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://poul.kr/2022/04/06/00-laser-scan-slam/</loc>
-        <lastmod>2022-04-07T05:00:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
