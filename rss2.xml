@@ -9,71 +9,8 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Sun, 10 Dec 2023 09:19:13 GMT</pubDate>
+    <pubDate>Sat, 04 Nov 2023 06:53:04 GMT</pubDate>
     <generator>http://hexo.io/</generator>
-    
-    <item>
-      <title>auto hexo test</title>
-      <link>https://poul.kr/2023/12/10/us20231210181913/</link>
-      <guid>https://poul.kr/2023/12/10/us20231210181913/</guid>
-      <pubDate>Sun, 10 Dec 2023 09:19:13 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;auto hexo test auto hexo test auto hexo test&lt;br&gt; auto hexo test2&lt;/p&gt;
-</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>auto hexo test auto hexo test auto hexo test<br> auto hexo test2</p>]]></content:encoded>
-      
-      
-      <category domain="https://poul.kr/categories/Economy/">Economy</category>
-      
-      
-      <category domain="https://poul.kr/tags/Economy/">Economy</category>
-      
-      <category domain="https://poul.kr/tags/US-Stock/">US Stock</category>
-      
-      
-      <comments>https://poul.kr/2023/12/10/us20231210181913/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://poul.kr/2023/12/10/us20231210181742/</link>
-      <guid>https://poul.kr/2023/12/10/us20231210181742/</guid>
-      <pubDate>Sun, 10 Dec 2023 09:17:42 GMT</pubDate>
-      
-        
-        
-      <description>&lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;title: auto hexo test
-categories:
-- Economy
-tags:
-- Economy
-- Tax
-toc: true
-sidebar:
-left:
-    sticky: true
-right:
-    stick</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<hr><pre><code>title: auto hexo testcategories:- Economytags:- Economy- Taxtoc: truesidebar:left:    sticky: trueright:    sticky: truewidgets:- type: toc    position: right- type: categories    position: right- type: archives    position: right- type: recent_posts    position: right- type: tags    position: rightdate: 2023-12-10 18:17:42updated: 2023-12-10 18:17:42---auto hexo test auto hexo test auto hexo test </code></pre><p> auto hexo test2    </p>]]></content:encoded>
-      
-      
-      
-      
-      <comments>https://poul.kr/2023/12/10/us20231210181742/#disqus_thread</comments>
-      
-    </item>
     
     <item>
       <title>연말정산에 대해 정리해보기</title>
