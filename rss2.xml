@@ -9,8 +9,35 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Tue, 17 Feb 2026 02:29:00 GMT</pubDate>
+    <pubDate>Tue, 17 Feb 2026 21:10:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>코덱스 사용일지 - 2월 17일 오전부터 18일 새벽까지</title>
+      <link>https://poul.kr/2026/02/18/20260218-codex-log-diary-0217-0218/</link>
+      <guid>https://poul.kr/2026/02/18/20260218-codex-log-diary-0217-0218/</guid>
+      <pubDate>Tue, 17 Feb 2026 21:10:00 GMT</pubDate>
+      
+      <description>&lt;p&gt;코덱스 사용일지 - 2월 17일 오전부터 18일 새벽까지&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>코덱스 사용일지 - 2월 17일 오전부터 18일 새벽까지</p><span id="more"></span><h2 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h2><p>오늘은 기능을 크게 새로 만들기보다는,<br>앞으로 계속 굴릴 수 있는 작업 환경을 정리한 날이었다.</p><p>보안, 계정, 배포 신뢰도처럼<br>눈에 덜 보이지만 오래 가는 바닥 작업을 많이 했다.</p><h2 id="로그-기준-기간"><a href="#로그-기준-기간" class="headerlink" title="로그 기준 기간"></a>로그 기준 기간</h2><ul><li>KST 기준 <code>2026-02-17 06:00</code> ~ <code>2026-02-18 05:59</code></li><li>실제 사용자 요청이 확인된 구간: <code>2026-02-17 09:10</code> ~ <code>2026-02-17 18:39</code></li></ul><h2 id="오늘-한-큰-일들"><a href="#오늘-한-큰-일들" class="headerlink" title="오늘 한 큰 일들"></a>오늘 한 큰 일들</h2><ol><li>GitHub OAuth 유출 대응 흐름 정리</li></ol><ul><li>한 일: 토큰 노출 여부 확인, 노출 토큰의 계정 소속 확인, 히스토리 정리 필요성 점검.</li><li>왜: 푸시&#x2F;배포를 계속하려면 먼저 계정 보안 리스크를 닫아야 해서.</li></ul><ol start="2"><li>블로그 게시 시간(KST) 정합성 점검</li></ol><ul><li>한 일: 배포 후 게시 시각이 한국 시간 기준으로 어긋나 보이는 문제 확인 및 교정 흐름 정리.</li><li>왜: 기록형 블로그에서는 시간 메타데이터 신뢰도가 생각보다 중요해서.</li></ul><ol start="3"><li>GitHub 재연결 가이드 정리</li></ol><ul><li>한 일: 기존 인증 정리 -&gt; 새 인증 등록 -&gt; 로그인 상태 검증까지 한 번에 정리.</li><li>왜: “당장 접속”보다 “다음에도 안 꼬이는 운영 방식”이 필요해서.</li></ul><ol start="4"><li>멀티 계정 SSH 분리 방식 확정</li></ol><ul><li>한 일: 계정명을 <code>robotjuhwan</code>&#x2F;&#96;&#96;으로 확정하고, SSH 별칭 기반 분리 등록 절차로 정리.</li><li>왜: 저장소마다 다른 계정으로 실수 푸시하는 문제를 막기 위해.</li></ul><ol start="5"><li>출력 형식 제약 실험(JSON only)</li></ol><ul><li>한 일: 짧은 테스트 입력으로 응답 포맷 강제 조건이 안정적으로 동작하는지 확인.</li><li>왜: 자동화 파이프라인에서 예측 가능한 출력 형태가 필요해서.</li></ul><h2 id="오늘-결론"><a href="#오늘-결론" class="headerlink" title="오늘 결론"></a>오늘 결론</h2><p>오늘의 핵심은 “새 기능 추가”보다<br>“보안&#x2F;계정&#x2F;배포를 안정적으로 운영할 기반 정리”였다.</p><p>앞으로 코덱스 작업을 계속 밀어붙이기 위해<br>필수적인 운영 체계를 다진 하루였다.</p>]]></content:encoded>
+      
+      
+      <category domain="https://poul.kr/categories/Chat/">Chat</category>
+      
+      
+      <category domain="https://poul.kr/tags/Chat/">Chat</category>
+      
+      <category domain="https://poul.kr/tags/Codex/">Codex</category>
+      
+      <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
+      
+      
+      <comments>https://poul.kr/2026/02/18/20260218-codex-log-diary-0217-0218/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>코덱스 사용일지 - 2월 16일 아침부터 17일 새벽까지</title>
