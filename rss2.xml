@@ -9,8 +9,35 @@
     <atom:link href="https://poul.kr/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>포울 블로그</description>
-    <pubDate>Tue, 17 Feb 2026 21:10:00 GMT</pubDate>
+    <pubDate>Thu, 19 Feb 2026 01:25:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>코덱스 사용일지 - 2월 18일 아침부터 19일 새벽까지</title>
+      <link>https://poul.kr/2026/02/19/20260219-codex-log-diary-0218-0219/</link>
+      <guid>https://poul.kr/2026/02/19/20260219-codex-log-diary-0218-0219/</guid>
+      <pubDate>Thu, 19 Feb 2026 01:25:00 GMT</pubDate>
+      
+      <description>&lt;p&gt;코덱스 사용일지 - 2월 18일 아침부터 19일 새벽까지&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>코덱스 사용일지 - 2월 18일 아침부터 19일 새벽까지</p><span id="more"></span><h2 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h2><p>어제는 코드를 크게 늘리는 날이라기보다,<br>“출력이 흔들리지 않게 만드는 날”에 가까웠다.</p><p>한 번 쓰고 끝나는 답변보다<br>반복 실행해도 형태가 무너지지 않는 템플릿을 계속 다듬었다.</p><h2 id="로그-기준-기간"><a href="#로그-기준-기간" class="headerlink" title="로그 기준 기간"></a>로그 기준 기간</h2><ul><li>KST 기준 <code>2026-02-18 06:00</code> ~ <code>2026-02-19 05:59</code></li><li>확인된 세션: 49개</li><li>실제 세션 분포: <code>hermes_v2</code> 32개, <code>runju/blog-site</code> 17개</li><li>실제 로그 시작&#x2F;종료: <code>2026-02-18 07:07</code> ~ <code>2026-02-19 04:47</code> (KST)</li></ul><h2 id="어제-오늘-새벽에-한-큰-일들"><a href="#어제-오늘-새벽에-한-큰-일들" class="headerlink" title="어제~오늘 새벽에 한 큰 일들"></a>어제~오늘 새벽에 한 큰 일들</h2><ol><li>정치 오피니언 생성 포맷 실험 (<code>runju/blog-site</code>)</li></ol><ul><li>한 일: 정치 이슈를 JSON 구조로 뽑는 파이프라인을 반복 실행.</li><li>왜: 글 초안 자동화를 할 때 결과물 모양이 매번 달라지면 후처리가 어려워서.</li></ul><ol start="2"><li>페르소나&#x2F;문체 다이얼 튜닝</li></ol><ul><li>한 일: 같은 주제라도 말투(직설도, 유머, 톤)를 바꿔가며 출력 품질 비교.</li><li>왜: “같은 사람의 연속된 글”처럼 읽히게 하려면 문체 일관성이 필요해서.</li></ul><ol start="3"><li>자산 리서치 출력 스키마 고정 (<code>hermes_v2</code>)</li></ol><ul><li>한 일: <code>query/summary/picks</code> 같은 핵심 필드를 고정하고, self-score까지 포함한 구조를 테스트.</li><li>왜: 나중에 자동 집계&#x2F;비교하려면 필드가 고정돼 있어야 분석이 가능해서.</li></ul><ol start="4"><li>리밸런싱 판단 템플릿 정리</li></ol><ul><li>한 일: <code>Top 5 후보</code>, <code>A/B/C 리밸런싱 옵션</code>, <code>If-Then 트리거</code> 형태로 의사결정 틀을 분리.</li><li>왜: 매번 긴 문장으로 읽기보다, 바로 비교 가능한 형태가 실제 사용에 유리해서.</li></ul><ol start="5"><li>안전장치(가드레일) 강화</li></ol><ul><li>한 일: 직접 매수&#x2F;매도 지시 표현을 피하고, 근거 출처와 “근거 부족” 표기 규칙을 강제.</li><li>왜: 투자&#x2F;정치 콘텐츠는 톤보다 신뢰가 먼저라서, 책임 경계와 근거 표기를 분명히 하려는 목적.</li></ul><h2 id="오늘-결론"><a href="#오늘-결론" class="headerlink" title="오늘 결론"></a>오늘 결론</h2><p>어제의 핵심은 결과물 개수보다<br>“반복 가능한 출력 규격”을 만드는 일이었다.</p><p>한 줄 요약:<br>코덱스를 더 많이 쓴 날이 아니라,<br>코덱스를 더 안정적으로 쓰기 위한 틀을 만든 날이었다.</p>]]></content:encoded>
+      
+      
+      <category domain="https://poul.kr/categories/Chat/">Chat</category>
+      
+      
+      <category domain="https://poul.kr/tags/Chat/">Chat</category>
+      
+      <category domain="https://poul.kr/tags/Codex/">Codex</category>
+      
+      <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
+      
+      
+      <comments>https://poul.kr/2026/02/19/20260219-codex-log-diary-0218-0219/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>코덱스 사용일지 - 2월 17일 오전부터 18일 새벽까지</title>
