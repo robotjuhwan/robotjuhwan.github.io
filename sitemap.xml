@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://poul.kr/2026/06/07/20260607-boongboonggo-intro/</loc>
+    <loc>https://poul.kr/2026/06/07/20260607-hermes-project-intro/</loc>
     
     <lastmod>2026-06-07</lastmod>
     
@@ -12,6 +12,15 @@
   
   <url>
     <loc>https://poul.kr/about/</loc>
+    
+    <lastmod>2026-06-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/2026/06/07/20260607-boongboonggo-intro/</loc>
     
     <lastmod>2026-06-07</lastmod>
     
@@ -83,15 +92,6 @@
   </url>
   
   <url>
-    <loc>https://poul.kr/disclaimer/</loc>
-    
-    <lastmod>2026-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://poul.kr/privacy/</loc>
     
     <lastmod>2026-02-16</lastmod>
@@ -102,6 +102,15 @@
   
   <url>
     <loc>https://poul.kr/contact/</loc>
+    
+    <lastmod>2026-02-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/disclaimer/</loc>
     
     <lastmod>2026-02-16</lastmod>
     
@@ -178,6 +187,20 @@
   </url>
   
   <url>
+    <loc>https://poul.kr/tags/Economy/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/tags/Tax/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://poul.kr/tags/Chat/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -199,34 +222,6 @@
   </url>
   
   <url>
-    <loc>https://poul.kr/tags/Freqtrade/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://poul.kr/tags/Economy/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://poul.kr/tags/Tax/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://poul.kr/tags/OpenAI/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://poul.kr/tags/Blog/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -235,6 +230,48 @@
   
   <url>
     <loc>https://poul.kr/tags/Hexo/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/tags/HERMES/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/tags/TradeCraft/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/tags/KIS/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/tags/Binance/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/tags/OpenAI/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -268,6 +305,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://poul.kr/tags/Freqtrade/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -278,7 +322,7 @@
   </url>
   
   <url>
-    <loc>https://poul.kr/categories/Food/%ED%8F%AC%ED%95%AD/</loc>
+    <loc>https://poul.kr/categories/Economy/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -292,7 +336,14 @@
   </url>
   
   <url>
-    <loc>https://poul.kr/categories/Economy/</loc>
+    <loc>https://poul.kr/categories/Food/%ED%8F%AC%ED%95%AD/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poul.kr/categories/Project/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
