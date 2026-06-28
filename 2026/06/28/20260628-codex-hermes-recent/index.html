@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#3273dc"><meta name="robots" content="index,follow"><title>최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중 - PouL</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="PouL"><meta name="msapplication-TileImage" content="/img/icon-192.png"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PouL"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="192x192" href="/img/icon-192.png"><link rel="apple-touch-icon" sizes="512x512" href="/img/icon-512.png"><meta name="description" content="2026년 6월 14일 이후부터 6월 28일까지, 코덱스로 HERMES와 쥬를 어떻게 운영 시스템처럼 다듬고 있는지 그림과 함께 정리한다."><meta property="og:type" content="blog"><meta property="og:title" content="최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중"><meta property="og:url" content="https://poul.kr/2026/06/28/20260628-codex-hermes-recent/"><meta property="og:site_name" content="PouL"><meta property="og:description" content="2026년 6월 14일 이후부터 6월 28일까지, 코덱스로 HERMES와 쥬를 어떻게 운영 시스템처럼 다듬고 있는지 그림과 함께 정리한다."><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://poul.kr/img/posts/20260628-codex-hermes-recent/cover.png"><meta property="article:published_time" content="2026-06-28T14:35:48.000Z"><meta property="article:modified_time" content="2026-06-28T14:35:48.000Z"><meta property="article:author" content="PouL"><meta property="article:tag" content="Chat"><meta property="article:tag" content="Codex"><meta property="article:tag" content="Worklog"><meta property="article:tag" content="HERMES"><meta property="article:tag" content="Jue"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://poul.kr/img/posts/20260628-codex-hermes-recent/cover.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://poul.kr/2026/06/28/20260628-codex-hermes-recent/"},"headline":"최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중","image":["https://poul.kr/img/posts/20260628-codex-hermes-recent/cover.png"],"datePublished":"2026-06-28T14:35:48.000Z","dateModified":"2026-06-28T14:35:48.000Z","author":{"@type":"Person","name":"PouL"},"publisher":{"@type":"Organization","name":"PouL","logo":{"@type":"ImageObject","url":"https://poul.kr/img/poul_letter.svg"}},"description":"2026년 6월 14일 이후부터 6월 28일까지, 코덱스로 HERMES와 쥬를 어떻게 운영 시스템처럼 다듬고 있는지 그림과 함께 정리한다."}</script><meta name="naver-site-verification" content="1952a8d7d5081448cd5118063be73194d9003046"><link rel="canonical" href="https://poul.kr/2026/06/28/20260628-codex-hermes-recent/"><link rel="icon" href="/img/small_logo.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><!--!--><!--!--><!--!--><!--!--><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454862779387141" crossorigin="anonymous"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss2.xml" title="PouL" type="application/rss+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a><a class="navbar-item" href="/privacy">Privacy</a><a class="navbar-item" href="/contact">Contact</a><a class="navbar-item" href="/disclaimer">Disclaimer</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/posts/20260628-codex-hermes-recent/cover.svg" alt="최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-9 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2026-06-28T14:35:48.000Z" title="6/28/2026, 11:35:48 PM">2026-06-28</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2026-06-28T14:35:48.000Z" title="6/28/2026, 11:35:48 PM">2026-06-28</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Chat/">Chat</a></span><span class="level-item">26분안에 읽기 (약 3834 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile">최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중</h1><div class="content"><p>이전 글 이후로 코덱스를 어떻게 쓰고 있는지 다시 정리해본다.</p>
+<span id="more"></span>
+
+<h2 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h2><p>마지막으로 올린 글이 <code>6월 10일 이후 코덱스 사용상황</code>이었다.</p>
+<p>그 글을 쓰고 나서 또 2주 정도가 지났다.<br>겉으로 보면 블로그 글은 잠깐 멈춘 것처럼 보이는데,<br>실제로는 HERMES 안쪽에서 꽤 큰 변화가 있었다.</p>
+<p>이번 기간은 새 프로젝트를 마구 늘렸다기보다,<br>이미 만들고 있던 HERMES를 “진짜 매일 돌아가는 운영 시스템”처럼 만드는 쪽에 가까웠다.</p>
+<p>HERMES는 내가 만들고 있는 투자 운영실이고,<br><code>쥬</code>는 그 안에서 투자 판단을 도와주는 에이전트다.<br>처음에는 쥬가 리서치 요약을 잘하고,<br>종목에 대한 생각을 정리해주는 정도였다.</p>
+<p>그런데 최근에는 느낌이 조금 달라졌다.</p>
+<p>이제 쥬는 그냥 말을 잘하는 AI가 아니라,<br>자기 기억을 가지고,<br>자기 판단 근거를 읽고,<br>거래 기록을 복기하고,<br>멈추면 다시 일어나야 하는 하나의 운영체제처럼 변해가고 있다.</p>
+<p>뭔가 말이 거창한데, 실제로 내가 요즘 코덱스로 하고 있는 일이 딱 그쪽이다.</p>
+<p><img src="/img/posts/20260628-codex-hermes-recent/cover.svg" alt="Recent Codex and HERMES cover"></p>
+<h2 id="로그-기준-기간"><a href="#로그-기준-기간" class="headerlink" title="로그 기준 기간"></a>로그 기준 기간</h2><p>이번 글은 아래 기간을 기준으로 적는다.</p>
+<ul>
+<li>KST 기준 <code>2026-06-14 13:56</code> 이후</li>
+<li>지금 글을 쓰는 <code>2026-06-28 23:35</code>까지</li>
+<li>블로그 소스, 코덱스 세션 기록, HERMES 프로젝트 변경 흔적을 기준으로 정리</li>
+</ul>
+<p>이번에도 원문 로그를 그대로 붙이지는 않는다.<br>로그에는 실제 종목, 계좌, 주문, 설정, 인증 관련 흐름이 섞일 수 있기 때문이다.</p>
+<p>그래서 공개 글에서는 숫자보다 구조를 남긴다.<br>무엇을 만들었고,<br>왜 만들었고,<br>내가 시스템을 어떤 방향으로 밀고 있는지만 적는다.</p>
+<p><img src="/img/posts/20260628-codex-hermes-recent/timeline.svg" alt="Work period map"></p>
+<h2 id="한-줄로-말하면"><a href="#한-줄로-말하면" class="headerlink" title="한 줄로 말하면"></a>한 줄로 말하면</h2><p>최근 2주의 핵심은 이거다.</p>
+<p>HERMES가 “투자 관련 기능이 많은 앱”에서 “쥬가 실제로 판단하고 복기하고 다시 배워가는 운영실”로 넘어가는 중이다.</p>
+<p>전에는 화면, 리포트, 자동화, API 연결 같은 부품을 붙이는 느낌이 강했다.<br>요즘은 그 부품들이 쥬의 판단 루프 안으로 들어오고 있다.</p>
+<p>보고서가 있으면 그냥 요약하고 끝나는 게 아니라,<br>그 보고서가 어떤 판단에 쓰였는지 남아야 한다.</p>
+<p>거래가 일어나면 그냥 수익&#x2F;손실만 보는 게 아니라,<br>진입이 좋았는지,<br>청산이 늦었는지,<br>수수료와 스프레드 때문에 손익이 깎였는지,<br>어떤 lane에서만 성과가 나는지 봐야 한다.</p>
+<p>여기서 lane은 쉽게 말하면 “거래가 굴러가는 차선” 같은 거다.<br>국장 단기, 국장 중기, ETF, Binance 현물, Binance 선물처럼 성격이 다른 거래 묶음을 따로 보는 개념이다.</p>
+<p>이걸 하나로 섞어버리면,<br>어디가 잘하고 어디가 못하는지 모른다.</p>
+<h2 id="쥬가-기억을-가지기-시작했다"><a href="#쥬가-기억을-가지기-시작했다" class="headerlink" title="쥬가 기억을 가지기 시작했다"></a>쥬가 기억을 가지기 시작했다</h2><p>가장 큰 변화는 메모리 쪽이다.</p>
+<p>예전에는 쥬가 그때그때 자료를 보고 답하는 느낌이 강했다.<br>물론 그것도 충분히 유용했다.<br>그런데 투자 쪽에서는 이게 조금 부족하다.</p>
+<p>왜냐하면 투자 판단은 한 번의 질문으로 끝나는 일이 아니기 때문이다.</p>
+<p>어떤 종목을 왜 봤는지,<br>어떤 조건에서 들어가려고 했는지,<br>들어간 뒤에 무엇이 틀렸는지,<br>익절과 손절은 계획대로 됐는지,<br>다음에는 어떤 기준을 더 조심해야 하는지,<br>이런 것들이 계속 쌓여야 한다.</p>
+<p>최근 작업에서는 이런 기억을 더 촘촘하게 만들었다.</p>
+<p>RAG라는 것도 자주 나온다.<br>RAG는 쉽게 말하면 AI가 답하기 전에 자료창고에서 관련 기록을 찾아오는 방식이다.<br>그냥 머릿속으로 대충 말하는 게 아니라,<br>보고서, 메모리, 거래 기록, 전략 노트 같은 것을 다시 꺼내 읽고 판단하게 하는 장치다.</p>
+<p>여기에 한 단계 더해서 <code>Jue Wiki</code>라는 흐름도 생겼다.<br>이건 쥬가 계속 참고하는 내부 위키에 가깝다.</p>
+<p>사람으로 치면 투자 노트, 반성문, 작전 매뉴얼, 실수 기록, 체크리스트가 한곳에 정리되는 느낌이다.<br>그리고 쥬가 다음 판단을 할 때 이 위키를 다시 읽는다.</p>
+<p><img src="/img/posts/20260628-codex-hermes-recent/jue-loop.svg" alt="Jue memory loop"></p>
+<h2 id="리서치는-자료가-아니라-척추가-됐다"><a href="#리서치는-자료가-아니라-척추가-됐다" class="headerlink" title="리서치는 자료가 아니라 척추가 됐다"></a>리서치는 자료가 아니라 척추가 됐다</h2><p>이번 기간에 리서치 쪽도 꽤 중요했다.</p>
+<p>HERMES에는 여러 리서치 흐름이 있다.<br>증권사 리포트도 있고,<br>시장 흐름을 보는 쪽도 있고,<br>국장 종목을 보는 쪽도 있고,<br>크립토 시장 내러티브를 보는 쪽도 있다.</p>
+<p>처음에는 이 자료들이 “읽을거리”에 가까웠다.<br>그런데 지금은 이걸 쥬 판단의 척추처럼 만들고 싶어졌다.</p>
+<p>왜 이 종목이 후보가 됐는지,<br>왜 어떤 후보는 피해야 하는지,<br>왜 어떤 거래는 너무 비싸거나 위험한지,<br>이런 판단이 리서치와 연결되어 있어야 한다.</p>
+<p>또 하나 중요한 건 점수다.</p>
+<p>AI가 어떤 종목이나 전략에 점수를 주면 그럴듯해 보인다.<br>그런데 “왜 89점이지?”라는 질문을 해보면 갑자기 허술한 점이 드러난다.</p>
+<p>그래서 최근에는 점수 자체보다,<br>점수가 어떤 근거에서 나왔는지,<br>단기&#x2F;중기&#x2F;장기 관점이 섞인 건 아닌지,<br>실제 성과와 나중에 맞춰볼 수 있는지,<br>이런 쪽을 더 보게 됐다.</p>
+<p>요즘 내가 원하는 쥬는 그럴듯한 말을 하는 쥬가 아니다.<br>근거가 약하면 약하다고 말하고,<br>자료가 부족하면 부족하다고 말하고,<br>자기 판단이 틀렸으면 다음번 정책을 고치는 쥬다.</p>
+<p><img src="/img/posts/20260628-codex-hermes-recent/knowledge-layer.svg" alt="Knowledge layer"></p>
+<h2 id="KIS-Binance-Upbit가-같은-자동매매는-아니었다"><a href="#KIS-Binance-Upbit가-같은-자동매매는-아니었다" class="headerlink" title="KIS, Binance, Upbit가 같은 자동매매는 아니었다"></a>KIS, Binance, Upbit가 같은 자동매매는 아니었다</h2><p>이번 기간에도 KIS와 Binance 이야기가 계속 나왔다.</p>
+<p>KIS는 한국투자증권 API다.<br>국장 쪽 거래를 연결하는 통로라고 보면 된다.</p>
+<p>Binance와 Upbit는 크립토 쪽이다.<br>Binance는 해외 거래소고,<br>Upbit는 국내 크립토 거래소다.</p>
+<p>겉으로는 전부 자동매매처럼 보이지만,<br>실제로는 성격이 많이 다르다.</p>
+<p>국장은 장 시간이 있다.<br>장전, 장중, 마감이라는 리듬이 있고,<br>리포트와 공시, 수급, 보유 종목 상태를 같이 봐야 한다.<br>또 이미 들고 있는 종목을 쥬가 어떤 블록으로 관리할지도 중요하다.</p>
+<p>크립토는 24시간 돌아간다.<br>현물과 선물이 다르고,<br>오더북, 스프레드, 펀딩비, 변동성이 훨씬 앞에 나온다.<br>잠깐 좋아 보이는 신호도 비용을 빼면 별 의미가 없을 수 있다.</p>
+<p>그래서 쥬도 하나의 이름을 가지고 있지만,<br>실제로는 국장 쥬와 Binance 쥬가 서로 다른 리듬을 가져야 한다.</p>
+<p>최근 작업에서는 이 차이를 더 노골적으로 분리하려고 했다.<br>메모리도 섞이면 안 되고,<br>성과표도 섞이면 안 되고,<br>판단 기준도 똑같이 쓰면 안 된다.</p>
+<p>이건 꽤 중요한 전환이었다.</p>
+<p>AI에게 “잘해봐”라고 말하는 것보다,<br>“네가 어떤 경기장에서 뛰고 있는지부터 구분해”라고 말하는 쪽에 가까웠다.</p>
+<h2 id="수익률보다-먼저-본-것은-기록의-품질"><a href="#수익률보다-먼저-본-것은-기록의-품질" class="headerlink" title="수익률보다 먼저 본 것은 기록의 품질"></a>수익률보다 먼저 본 것은 기록의 품질</h2><p>요즘 제일 많이 느낀 건,<br>자동매매에서 수익률만 보면 오히려 헷갈린다는 점이다.</p>
+<p>수익이 났는지 손실이 났는지는 당연히 중요하다.<br>하지만 그 전에 기록이 정확해야 한다.</p>
+<p>진입 가격,<br>청산 가격,<br>수수료,<br>세금,<br>스프레드,<br>슬리피지,<br>펀딩비,<br>실제 순손익.</p>
+<p>이런 게 정확히 기록되지 않으면,<br>쥬가 나중에 자기가 잘한 건지 못한 건지 배울 수 없다.</p>
+<p>또 거래 lane별로 따로 봐야 한다.</p>
+<p>어떤 lane은 소액으로는 괜찮은데 키우면 안 될 수 있고,<br>어떤 lane은 승률은 낮아도 한 번 맞을 때 크게 벌 수 있고,<br>어떤 lane은 그냥 비용 때문에 구조적으로 약할 수 있다.</p>
+<p>그래서 최근에는 “좋은 lane만 권한을 키우자”는 방향이 강했다.</p>
+<p>말은 단순하다.</p>
+<p>잘하는 방식은 조금 더 기회를 주고,<br>약한 방식은 줄이고,<br>검증 안 된 방식은 너무 빨리 키우지 않는다.</p>
+<p>투자에서는 너무 당연한 말인데,<br>이걸 코드와 데이터 구조로 만들려면 생각보다 손이 많이 간다.</p>
+<h2 id="멈추면-드러나야-한다"><a href="#멈추면-드러나야-한다" class="headerlink" title="멈추면 드러나야 한다"></a>멈추면 드러나야 한다</h2><p>운영 쪽에서 또 많이 본 것은 멈춤이다.</p>
+<p>프로그램이 많아지면 언젠가는 뭐가 멈춘다.<br>리서치 러너가 멈출 수 있고,<br>메모리 업데이트가 실패할 수 있고,<br>거래 판단 루프가 시간 초과될 수 있고,<br>프롬프트가 너무 커져서 LLM이 처리하지 못할 수도 있다.</p>
+<p>중요한 건 “안 멈추는 척”이 아니다.<br>멈췄을 때 티가 나야 한다.</p>
+<p>그래서 watchdog 같은 개념이 나온다.<br>watchdog은 말 그대로 감시견이다.<br>주기적으로 프로세스 상태를 보고,<br>멈춘 것이 있으면 알려주거나 다시 띄우는 역할이다.</p>
+<p>또 텔레그램 알림도 중요해졌다.<br>내가 화면을 보고 있지 않아도,<br>중요한 에러가 있으면 알려줘야 한다.</p>
+<p>이런 건 멋있는 기능은 아니다.<br>하지만 실제 운영에서는 이런 기능이 제일 중요할 때가 많다.</p>
+<p>자동매매에서 제일 무서운 건 화려한 UI가 없는 게 아니라,<br>조용히 실패하는 것이다.</p>
+<p><img src="/img/posts/20260628-codex-hermes-recent/safety-ops.svg" alt="Safety and operations"></p>
+<h2 id="UI도-그냥-예쁜-화면이-아니었다"><a href="#UI도-그냥-예쁜-화면이-아니었다" class="headerlink" title="UI도 그냥 예쁜 화면이 아니었다"></a>UI도 그냥 예쁜 화면이 아니었다</h2><p>HERMES UI도 계속 만졌다.</p>
+<p>예쁘게 만드는 것도 중요하지만,<br>요즘 더 중요하게 느낀 건 “운영자가 지금 무엇을 봐야 하는가”였다.</p>
+<p>왼쪽 탭이 왜 이렇게 많은지,<br>국장 정보가 왜 안 보이는지,<br>LLM 사용량에 어떤 컴포넌트만 잡히는지,<br>Jue Wiki가 실제 판단에 어떻게 연결되는지,<br>러너 상태의 노란색 경고가 무엇을 의미하는지,<br>이런 질문들이 계속 나왔다.</p>
+<p>이건 일반 웹페이지 디자인과 조금 다르다.</p>
+<p>HERMES는 예쁜 소개 페이지가 아니라,<br>작은 투자 관제실에 가깝다.<br>그래서 화면은 보기 좋아야 하지만,<br>무엇보다 “지금 문제가 있는가”, “쥬가 무엇을 근거로 판단했는가”, “어떤 루프가 돌고 있는가”가 잘 보여야 한다.</p>
+<p>요즘 UI 작업은 그 방향이었다.</p>
+<p>정보를 더 많이 보여주는 게 아니라,<br>운영자가 지금 필요한 상태를 빨리 알아보게 만드는 쪽.</p>
+<p><img src="/img/posts/20260628-codex-hermes-recent/ops-console.svg" alt="Operations console"></p>
+<h2 id="코덱스-사용-방식도-변했다"><a href="#코덱스-사용-방식도-변했다" class="headerlink" title="코덱스 사용 방식도 변했다"></a>코덱스 사용 방식도 변했다</h2><p>내가 코덱스를 쓰는 방식도 조금 바뀌었다.</p>
+<p>처음에는 한 번에 하나씩 시키는 느낌이었다.</p>
+<p>“이거 고쳐줘.”</p>
+<p>“이 기능 만들어줘.”</p>
+<p>“테스트 돌려줘.”</p>
+<p>이런 식이다.</p>
+<p>그런데 HERMES가 커지면서 이제는 단일 요청보다,<br>큰 목표를 잡고 여러 에이전트나 단계로 쪼개는 일이 많아졌다.</p>
+<p>예를 들면 Jue Wiki 작업도 그냥 “위키 만들어줘”가 아니었다.</p>
+<p>스펙을 만들고,<br>러너를 만들고,<br>RAG 근거를 붙이고,<br>프롬프트 예산을 제한하고,<br>오류를 고치는 API를 만들고,<br>UI에 붙이고,<br>매니저 판단 루프가 실제로 읽게 만들고,<br>마지막으로 문서와 테스트를 확인하는 식이었다.</p>
+<p>조금 웃긴 건,<br>이제 내가 코덱스를 쓰는 게 아니라,<br>코덱스 안에서 작은 개발팀을 굴리는 느낌이 난다는 점이다.</p>
+<p>물론 아직 내가 계속 찔러봐야 한다.</p>
+<p>“왜 현물 거래가 덜 일어나지?”</p>
+<p>“왜 이 값이 이상하지?”</p>
+<p>“왜 메모리가 섞여 있지?”</p>
+<p>“왜 국장 정보가 안 보이지?”</p>
+<p>이런 식으로 계속 물어봐야 한다.</p>
+<p>하지만 예전보다 훨씬 큰 단위의 작업을 맡길 수 있게 된 건 확실하다.</p>
+<h2 id="이번-글에서-일부러-뺀-것"><a href="#이번-글에서-일부러-뺀-것" class="headerlink" title="이번 글에서 일부러 뺀 것"></a>이번 글에서 일부러 뺀 것</h2><p>이번 글에서는 실제 투자 관련 세부값은 거의 뺐다.</p>
+<p>실제 종목명,<br>잔고,<br>주문 결과,<br>세부 수익률,<br>API 키나 인증 흐름,<br>내부 파일 절대경로,<br>원문 로그.</p>
+<p>이런 건 블로그에 그대로 올릴 내용이 아니다.</p>
+<p>대신 공개해도 되는 수준에서,<br>최근 코덱스로 어떤 방향의 작업을 했는지만 남긴다.</p>
+<p>요약하면 이렇다.</p>
+<ul>
+<li>HERMES는 더 실제 운영 시스템처럼 변하고 있다.</li>
+<li>쥬는 단발성 답변봇보다 기억과 복기를 가진 투자 파트너 쪽으로 가고 있다.</li>
+<li>국장, Binance, Upbit는 서로 다른 리듬으로 분리되고 있다.</li>
+<li>수익률보다 먼저 정확한 기록과 검증 가능한 학습 구조가 중요해졌다.</li>
+<li>멈춤, 경고, 알림, 재시작 같은 운영 장치가 점점 중요해졌다.</li>
+<li>코덱스는 이제 단순 코드 작성 도구보다, 내 프로젝트를 같이 운영하는 개발팀 같은 느낌이 강하다.</li>
+</ul>
+<h2 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h2><p>최근 2주는 블로그에는 조용했지만,<br>속으로는 꽤 많은 구조가 바뀐 기간이었다.</p>
+<p>예전에는 “코덱스로 이런저런 것을 만들었다”였다면,<br>요즘은 “코덱스로 시스템이 스스로 기억하고 복기하고 운영되게 만들고 있다”에 가깝다.</p>
+<p>아직 완성은 아니다.<br>오히려 이제야 진짜 운영의 피곤한 부분들이 보이기 시작했다.</p>
+<p>근데 그게 또 재미있다.</p>
+<p>화면 하나 만들고 끝나는 게 아니라,<br>매일 돌아가는 작은 생물을 키우는 느낌이랄까.</p>
+<p>쥬가 아직 완벽한 투자 파트너는 아니다.<br>하지만 적어도 이제는 그냥 말만 하는 쥬는 아니다.</p>
+<p>기억하고,<br>틀리고,<br>고치고,<br>다시 움직이는 쥬가 되어가는 중이다.</p>
+<p>그리고 나는 그걸 코덱스랑 같이 계속 다듬고 있다.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중</p><p><a href="https://poul.kr/2026/06/28/20260628-codex-hermes-recent/">https://poul.kr/2026/06/28/20260628-codex-hermes-recent/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>PouL</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2026-06-28</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2026-06-28</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Chat/">Chat</a><a class="link-muted mr-2" rel="tag" href="/tags/Codex/">Codex</a><a class="link-muted mr-2" rel="tag" href="/tags/Worklog/">Worklog</a><a class="link-muted mr-2" rel="tag" href="/tags/HERMES/">HERMES</a><a class="link-muted mr-2" rel="tag" href="/tags/Jue/">Jue</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/06/14/20260614-codex-after-0610/"><span class="level-item">6월 10일 이후 코덱스 사용상황</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><div class="column column-right is-3-tablet is-3-desktop is-3-widescreen  order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#잡담"><span class="level-left"><span class="level-item">1</span><span class="level-item">잡담</span></span></a></li><li><a class="level is-mobile" href="#로그-기준-기간"><span class="level-left"><span class="level-item">2</span><span class="level-item">로그 기준 기간</span></span></a></li><li><a class="level is-mobile" href="#한-줄로-말하면"><span class="level-left"><span class="level-item">3</span><span class="level-item">한 줄로 말하면</span></span></a></li><li><a class="level is-mobile" href="#쥬가-기억을-가지기-시작했다"><span class="level-left"><span class="level-item">4</span><span class="level-item">쥬가 기억을 가지기 시작했다</span></span></a></li><li><a class="level is-mobile" href="#리서치는-자료가-아니라-척추가-됐다"><span class="level-left"><span class="level-item">5</span><span class="level-item">리서치는 자료가 아니라 척추가 됐다</span></span></a></li><li><a class="level is-mobile" href="#KIS-Binance-Upbit가-같은-자동매매는-아니었다"><span class="level-left"><span class="level-item">6</span><span class="level-item">KIS, Binance, Upbit가 같은 자동매매는 아니었다</span></span></a></li><li><a class="level is-mobile" href="#수익률보다-먼저-본-것은-기록의-품질"><span class="level-left"><span class="level-item">7</span><span class="level-item">수익률보다 먼저 본 것은 기록의 품질</span></span></a></li><li><a class="level is-mobile" href="#멈추면-드러나야-한다"><span class="level-left"><span class="level-item">8</span><span class="level-item">멈추면 드러나야 한다</span></span></a></li><li><a class="level is-mobile" href="#UI도-그냥-예쁜-화면이-아니었다"><span class="level-left"><span class="level-item">9</span><span class="level-item">UI도 그냥 예쁜 화면이 아니었다</span></span></a></li><li><a class="level is-mobile" href="#코덱스-사용-방식도-변했다"><span class="level-left"><span class="level-item">10</span><span class="level-item">코덱스 사용 방식도 변했다</span></span></a></li><li><a class="level is-mobile" href="#이번-글에서-일부러-뺀-것"><span class="level-left"><span class="level-item">11</span><span class="level-item">이번 글에서 일부러 뺀 것</span></span></a></li><li><a class="level is-mobile" href="#마무리"><span class="level-left"><span class="level-item">12</span><span class="level-item">마무리</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Chat/"><span class="level-start"><span class="level-item">Chat</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/Economy/"><span class="level-start"><span class="level-item">Economy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Food/"><span class="level-start"><span class="level-item">Food</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/Food/%ED%8F%AC%ED%95%AD/"><span class="level-start"><span class="level-item">포항</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Game/"><span class="level-start"><span class="level-item">Game</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Project/"><span class="level-start"><span class="level-item">Project</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2026/06/"><span class="level-start"><span class="level-item">6월 2026</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2026/02/"><span class="level-start"><span class="level-item">2월 2026</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">11월 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">4월 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><figure class="media-left"><a class="image" href="/2026/06/28/20260628-codex-hermes-recent/"><img src="/img/posts/20260628-codex-hermes-recent/cover.svg" alt="최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-06-28T14:35:48.000Z">2026-06-28</time></p><p class="title"><a href="/2026/06/28/20260628-codex-hermes-recent/">최근 코덱스 사용상황 - 쥬가 운영체제가 되어가는 중</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/06/14/20260614-codex-after-0610/"><img src="/img/posts/20260614-codex-after-0610/cover.svg" alt="6월 10일 이후 코덱스 사용상황"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-06-14T04:56:07.000Z">2026-06-14</time></p><p class="title"><a href="/2026/06/14/20260614-codex-after-0610/">6월 10일 이후 코덱스 사용상황</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/06/10/20260610-codex-usage-now/"><img src="/img/posts/20260610-codex-usage-now/cover.svg" alt="요즘 코덱스를 어떻게 쓰고 있나"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-06-10T12:40:40.000Z">2026-06-10</time></p><p class="title"><a href="/2026/06/10/20260610-codex-usage-now/">요즘 코덱스를 어떻게 쓰고 있나</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/06/07/20260607-hermes-project-intro/"><img src="/img/posts/20260607-hermes-project-intro/cover.svg" alt="에르메스 프로젝트 - 내 투자 운영실 만들기"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-06-07T04:35:00.000Z">2026-06-07</time></p><p class="title"><a href="/2026/06/07/20260607-hermes-project-intro/">에르메스 프로젝트 - 내 투자 운영실 만들기</a></p><p class="categories"><a href="/categories/Project/">Project</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/06/07/20260607-boongboonggo-intro/"><img src="/img/posts/20260607-boongboonggo-intro/cover.svg" alt="붕붕고라는 게임을 만들고 있다"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-06-07T04:26:00.000Z">2026-06-07</time></p><p class="title"><a href="/2026/06/07/20260607-boongboonggo-intro/">붕붕고라는 게임을 만들고 있다</a></p><p class="categories"><a href="/categories/Game/">Game</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Binance/"><span class="tag">Binance</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Blog/"><span class="tag">Blog</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BoongBoongGo/"><span class="tag">BoongBoongGo</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Chat/"><span class="tag">Chat</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Codex/"><span class="tag">Codex</span><span class="tag">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Economy/"><span class="tag">Economy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Food/"><span class="tag">Food</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Freqtrade/"><span class="tag">Freqtrade</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Game/"><span class="tag">Game</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HERMES/"><span class="tag">HERMES</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Jue/"><span class="tag">Jue</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KIS/"><span class="tag">KIS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OpenAI/"><span class="tag">OpenAI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tax/"><span class="tag">Tax</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TradeCraft/"><span class="tag">TradeCraft</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Unity/"><span class="tag">Unity</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Worklog/"><span class="tag">Worklog</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/"><span class="tag">투자자동화</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8F%AC%ED%95%AD/"><span class="tag">포항</span><span class="tag">2</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a><p class="is-size-7"><span>&copy; 2026 PouL</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "/privacy/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><!--!--><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="입력 하세요..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"입력 하세요...","untitled":"(제목 없음)","posts":"포스트","pages":"페이지","categories":"카테고리","tags":"태그"});
+        });</script></body></html>
