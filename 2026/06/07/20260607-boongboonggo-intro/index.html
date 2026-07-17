@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#3273dc"><meta name="robots" content="index,follow"><title>붕붕고라는 게임을 만들고 있다 - PouL</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="PouL"><meta name="msapplication-TileImage" content="/img/icon-192.png"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PouL"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="192x192" href="/img/icon-192.png"><link rel="apple-touch-icon" sizes="512x512" href="/img/icon-512.png"><meta name="description" content="자동 붕어빵 배달 오토바이로 작은 푸드테크 회사를 키우는 경영게임, 붕붕고를 간단히 소개한다."><meta property="og:type" content="blog"><meta property="og:title" content="붕붕고라는 게임을 만들고 있다"><meta property="og:url" content="https://poul.kr/2026/06/07/20260607-boongboonggo-intro/"><meta property="og:site_name" content="PouL"><meta property="og:description" content="자동 붕어빵 배달 오토바이로 작은 푸드테크 회사를 키우는 경영게임, 붕붕고를 간단히 소개한다."><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://poul.kr/img/posts/20260607-boongboonggo-intro/boong-bike-prototype.png"><meta property="article:published_time" content="2026-06-07T04:26:00.000Z"><meta property="article:modified_time" content="2026-06-07T04:26:00.000Z"><meta property="article:author" content="PouL"><meta property="article:tag" content="Codex"><meta property="article:tag" content="Game"><meta property="article:tag" content="BoongBoongGo"><meta property="article:tag" content="Unity"><meta property="article:tag" content="Web"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://poul.kr/img/posts/20260607-boongboonggo-intro/boong-bike-prototype.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://poul.kr/2026/06/07/20260607-boongboonggo-intro/"},"headline":"붕붕고라는 게임을 만들고 있다","image":["https://poul.kr/img/posts/20260607-boongboonggo-intro/boong-bike-prototype.png"],"datePublished":"2026-06-07T04:26:00.000Z","dateModified":"2026-06-07T04:26:00.000Z","author":{"@type":"Person","name":"PouL"},"publisher":{"@type":"Organization","name":"PouL","logo":{"@type":"ImageObject","url":"https://poul.kr/img/poul_letter.svg"}},"description":"자동 붕어빵 배달 오토바이로 작은 푸드테크 회사를 키우는 경영게임, 붕붕고를 간단히 소개한다."}</script><meta name="naver-site-verification" content="1952a8d7d5081448cd5118063be73194d9003046"><link rel="canonical" href="https://poul.kr/2026/06/07/20260607-boongboonggo-intro/"><link rel="icon" href="/img/small_logo.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><!--!--><!--!--><!--!--><!--!--><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454862779387141" crossorigin="anonymous"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss2.xml" title="PouL" type="application/rss+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a><a class="navbar-item" href="/privacy">Privacy</a><a class="navbar-item" href="/contact">Contact</a><a class="navbar-item" href="/disclaimer">Disclaimer</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/posts/20260607-boongboonggo-intro/cover.svg" alt="붕붕고라는 게임을 만들고 있다"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-9 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2026-06-07T04:26:00.000Z" title="6/7/2026, 1:26:00 PM">2026-06-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2026-06-07T04:26:00.000Z" title="6/7/2026, 1:26:00 PM">2026-06-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Game/">Game</a></span><span class="level-item">19분안에 읽기 (약 2860 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile">붕붕고라는 게임을 만들고 있다</h1><div class="content"><p>붕붕고라는 게임을 만들고 있다.</p>
+<span id="more"></span>
+
+<h2 id="잡담"><a href="#잡담" class="headerlink" title="잡담"></a>잡담</h2><p>요즘 코덱스로 이것저것 많이 만들고 있는데,<br>그중에 은근히 정이 많이 가는 프로젝트가 하나 있다.</p>
+<p>이름은 <code>붕붕고</code>.</p>
+<p>한 줄로 말하면,<br><strong>자동으로 붕어빵을 굽는 배달 오토바이로 작은 푸드테크 회사를 키우는 경영게임</strong>이다.</p>
+<p>붕어빵을 직접 굽는 게임도 아니고,<br>오토바이를 직접 조종하는 게임도 아니다.</p>
+<p>나는 창업자고,<br>고객 취향을 읽고,<br>자동조리 장비를 연구하고,<br>직원을 배치하고,<br>차량을 바꾸고,<br>매주 결과 리포트를 보면서<br>“이 사업이 진짜 될까?”를 증명해가는 쪽에 가깝다.</p>
+<p><img src="/img/posts/20260607-boongboonggo-intro/cover.svg" alt="붕붕고 소개 커버"></p>
+<h2 id="왜-하필-붕어빵-오토바이인가"><a href="#왜-하필-붕어빵-오토바이인가" class="headerlink" title="왜 하필 붕어빵 오토바이인가"></a>왜 하필 붕어빵 오토바이인가</h2><p>처음 아이디어는 약간 이상하다.</p>
+<p>그냥 붕어빵 가게를 키우는 것도 아니고,<br>배달앱을 만드는 것도 아니고,<br>오토바이에 자동 굽기 장비를 얹는다.</p>
+<p>근데 이 이상함이 마음에 든다.</p>
+<p>붕어빵은 되게 작고 익숙한 음식인데,<br>거기에 자동화, 배달, 고객 데이터, 맞춤 주문 같은 단어를 붙이면<br>갑자기 말도 안 되게 진지한 스타트업 아이템처럼 보인다.</p>
+<p>아니 사실 실제로도 진지해질 수 있다.</p>
+<p>고객마다 좋아하는 속재료가 다르고,<br>도착했을 때 따뜻해야 하고,<br>빠르게 가야 하고,<br>장비가 고장나면 안 되고,<br>행사장에서는 대량 주문도 버텨야 한다.</p>
+<p>이걸 게임 안에서는 이런 차량들이 맡는다.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:20px 0;">
+  <figure style="margin:0;">
+    <img src="/img/posts/20260607-boongboonggo-intro/boong-bike-prototype.png" alt="붕붕고 1호기 자동 붕어빵 배달 오토바이" loading="lazy">
+    <figcaption style="font-size:0.9em;text-align:center;color:#777;">붕붕고 1호기</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="/img/posts/20260607-boongboonggo-intro/boong-bike-speedster.png" alt="점심 피크형 붕붕고 오토바이" loading="lazy">
+    <figcaption style="font-size:0.9em;text-align:center;color:#777;">점심 피크형</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="/img/posts/20260607-boongboonggo-intro/boong-bike-premium.png" alt="프리미엄 보온형 붕붕고 오토바이" loading="lazy">
+    <figcaption style="font-size:0.9em;text-align:center;color:#777;">프리미엄 보온형</figcaption>
+  </figure>
+</div>
+
+<p>지금은 아직 완성 게임이라기보다는,<br>게임의 뼈대와 방향을 잡아가는 중이다.</p>
+<p>그래도 저 오토바이 이미지를 보고 있으면<br>“아 이건 좀 귀엽게 끝까지 밀어볼 만한데?” 하는 생각이 든다.</p>
+<h2 id="핵심은-돈보다-증거"><a href="#핵심은-돈보다-증거" class="headerlink" title="핵심은 돈보다 증거"></a>핵심은 돈보다 증거</h2><p>보통 경영게임이라고 하면<br>돈을 많이 벌고,<br>건물을 키우고,<br>직원을 늘리고,<br>숫자를 올리는 그림이 먼저 떠오른다.</p>
+<p>붕붕고도 당연히 돈이 중요하긴 하다.<br>현금이 떨어지면 연구도 못 하고,<br>차량도 못 사고,<br>직원도 못 뽑는다.</p>
+<p>근데 내가 붕붕고에서 더 중요하게 보고 있는 건 <code>증거</code>다.</p>
+<p>이 사업이 될 것 같다는 증거.</p>
+<p>예를 들면 이런 것들.</p>
+<ul>
+<li>어떤 고객이 자기 취향을 기억해달라고 다시 온다.</li>
+<li>오피스 거리에서 점심 피크를 버틴다.</li>
+<li>겨울 장터에서 도착 온도 평가를 통과한다.</li>
+<li>대학가에서 이상한 단짠 조합이 메뉴가 된다.</li>
+<li>프랜차이즈 감사에서 여러 지역의 품질 편차를 줄인다.</li>
+</ul>
+<p>게임 안에서는 이런 결과가 매주 리포트와 증거판에 남는다.</p>
+<p><img src="/img/posts/20260607-boongboonggo-intro/core-loop.svg" alt="붕붕고 주간 루프"></p>
+<p>내가 좋아하는 지점은 여기다.</p>
+<p>플레이어가 “이번 주 매출 얼마지?”만 보는 게 아니라,<br>“이번 주에 내가 무슨 가설을 증명했지?”를 보게 만들고 싶다.</p>
+<p>창업 게임처럼 보이지만,<br>사실은 작은 실험 기록 게임에 가깝다.</p>
+<h2 id="필드는-대시보드가-아니라-작은-회사처럼"><a href="#필드는-대시보드가-아니라-작은-회사처럼" class="headerlink" title="필드는 대시보드가 아니라 작은 회사처럼"></a>필드는 대시보드가 아니라 작은 회사처럼</h2><p>게임 화면도 처음부터 대시보드 느낌으로 가면 재미가 확 죽을 것 같았다.</p>
+<p>숫자표, 버튼, 표, 리포트만 있으면<br>그건 게임이라기보다는 운영툴 같다.<br>내가 요즘 만드는 자산관리 UI들이랑 너무 비슷해진다.</p>
+<p>붕붕고는 화면 한가운데에 작은 필드가 있고,<br>그 안에 본사, 연구소, 차고, 증거판, 고객 정류장, 도로가 보여야 한다.</p>
+<p>플레이어가 버튼을 누르기 전에<br>먼저 “내 작은 회사가 돌아가고 있구나”를 봐야 한다.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:20px 0;">
+  <figure style="margin:0;">
+    <img src="/img/posts/20260607-boongboonggo-intro/headquarters.png" alt="붕붕고 본사 컨셉 이미지" loading="lazy">
+    <figcaption style="font-size:0.9em;text-align:center;color:#777;">본사</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="/img/posts/20260607-boongboonggo-intro/research-lab.png" alt="붕붕고 연구소 컨셉 이미지" loading="lazy">
+    <figcaption style="font-size:0.9em;text-align:center;color:#777;">연구소</figcaption>
+  </figure>
+  <figure style="margin:0;">
+    <img src="/img/posts/20260607-boongboonggo-intro/staff-room.png" alt="붕붕고 직원실 컨셉 이미지" loading="lazy">
+    <figcaption style="font-size:0.9em;text-align:center;color:#777;">직원실</figcaption>
+  </figure>
+</div>
+
+<p>실제로 스펙에서도 메인 화면은 필드 중심으로 잡아뒀다.</p>
+<p>위쪽에는 주차, 현금, 명성, 만족도, 투자 신뢰 같은 HUD가 있고,<br>아래에는 연구, 직원, 차량, 지역&#x2F;정책, 다음 주 버튼이 있다.</p>
+<p>하지만 제일 큰 면적은 필드다.</p>
+<p>내 기준에서 이건 꽤 중요하다.<br>숫자를 올리는 게임이어도,<br>플레이어가 기억하는 건 결국 움직이는 장면이어야 하니까.</p>
+<h2 id="24주짜리-창업-캠페인"><a href="#24주짜리-창업-캠페인" class="headerlink" title="24주짜리 창업 캠페인"></a>24주짜리 창업 캠페인</h2><p>붕붕고의 첫 목표는 24주짜리 캠페인이다.</p>
+<p>동네에서 시작해서,<br>오피스 거리로 가고,<br>대학가로 확장하고,<br>터미널 축제장까지 가본 뒤,<br>마지막에는 전국 출시 심사를 받는다.</p>
+<p>말만 전국 출시지,<br>사실 게임적으로는 이런 질문을 던지는 구조다.</p>
+<p>“너의 붕붕고는 어떤 회사였나?”</p>
+<p><img src="/img/posts/20260607-boongboonggo-intro/campaign-roadmap.svg" alt="붕붕고 24주 캠페인 로드맵"></p>
+<p>Week 12에는 투자 피치가 있다.<br>여기서 초반 증거를 묶어서<br>“이게 그냥 귀여운 발명품인지, 진짜 사업 가능성이 있는지”를 한 번 판정한다.</p>
+<p>Week 24에는 전국 출시 심사가 있다.<br>여기서는 최종 점수와 엔딩 타이틀이 나온다.</p>
+<p>나는 이 구조가 마음에 든다.</p>
+<p>그냥 끝없이 돈 버는 게임보다,<br>일정 기간 안에 내 사업의 성격을 만든다는 쪽이 더 선명하다.</p>
+<h2 id="플레이-스타일도-남기고-싶다"><a href="#플레이-스타일도-남기고-싶다" class="headerlink" title="플레이 스타일도 남기고 싶다"></a>플레이 스타일도 남기고 싶다</h2><p>붕붕고에서 만들고 싶은 엔딩은<br>단순히 <code>성공</code>, <code>실패</code>가 아니다.</p>
+<p>플레이어가 어떤 선택을 많이 했는지에 따라<br>내 붕붕고의 성격이 남았으면 좋겠다.</p>
+<p>예를 들면 이런 식이다.</p>
+<p><img src="/img/posts/20260607-boongboonggo-intro/strategy-arcs.svg" alt="붕붕고 전략 아이덴티티"></p>
+<p>맞춤 주문을 계속 파고들면 초개인화 붕붕고.<br>보온과 속도를 밀면 따끈신속 붕붕고.<br>정비와 교육으로 안정성을 만들면 안정운영 붕붕고.<br>시식회와 엑스포를 잘 챙기면 행사스타 붕붕고.</p>
+<p>물론 실제 게임에서는 이런 이름들이<br>그냥 문장 하나로만 끝나면 안 된다.</p>
+<p>고객 주문, 증거판, 수상, 최종 리포트에서<br>“아 내가 이번 판을 이렇게 운영했구나”가 보여야 한다.</p>
+<h2 id="고객이-익명-숫자가-아니었으면"><a href="#고객이-익명-숫자가-아니었으면" class="headerlink" title="고객이 익명 숫자가 아니었으면"></a>고객이 익명 숫자가 아니었으면</h2><p>붕붕고에서 또 하나 중요하게 잡은 건 고객 기억이다.</p>
+<p><code>고객 120명</code>, <code>만족도 +3</code> 이런 숫자만 있으면<br>관리는 되는데 이야기가 안 남는다.</p>
+<p>그래서 대표 고객들이 있다.</p>
+<p>미나네 가족,<br>단골 후보 성우,<br>오피스 매니저 지은,<br>미식 리뷰어 하루,<br>대학생 나래,<br>여행객 민수.</p>
+<p>이런 식으로 이름이 붙은 고객들이<br>특정 주차에 등장하고,<br>다시 돌아오고,<br>자기 취향 주문을 남기는 구조를 생각하고 있다.</p>
+<p>예를 들면 미나네 가족은 알레르기와 취향이 섞인 주문을 하고,<br>성우는 지난주 팥 농도를 기억해달라고 하고,<br>지은은 점심시간에 식지 않는 붕어빵을 원한다.</p>
+<p>이런 것들이 쌓이면<br>경영 수치가 아니라 기억이 된다.</p>
+<p><img src="/img/posts/20260607-boongboonggo-intro/pixel-asset-board.svg" alt="붕붕고 픽셀 에셋 보드"></p>
+<p>픽셀 에셋도 이런 방향에 맞춰 잡고 있다.<br>작아도 알아볼 수 있고,<br>차량과 건물과 고객이 한 화면에서 같이 살아야 한다.</p>
+<p>엄청 화려한 그래픽보다<br>작은 아이콘들이 꾸준히 움직이는 쪽이 더 맞는 게임 같다.</p>
+<h2 id="이벤트는-보너스가-아니라-공개-검증"><a href="#이벤트는-보너스가-아니라-공개-검증" class="headerlink" title="이벤트는 보너스가 아니라 공개 검증"></a>이벤트는 보너스가 아니라 공개 검증</h2><p>중간중간 이벤트도 있다.</p>
+<p>동네 붕어빵 시식회,<br>겨울 장터 예선,<br>투자 피치 데이,<br>대학가 푸드 배틀,<br>프랜차이즈 운영 감사,<br>전국 브랜드 엑스포.</p>
+<p>이름만 보면 그냥 보상 이벤트 같지만,<br>내가 생각하는 역할은 조금 다르다.</p>
+<p>이벤트는 “공개 검증”이다.</p>
+<p>평소에는 고객 반응을 내부적으로 읽는다면,<br>이벤트에서는 그동안 쌓은 증거가 밖에서 평가받는다.</p>
+<p><img src="/img/posts/20260607-boongboonggo-intro/taiyaki-festival.png" alt="붕붕고 겨울 축제 이벤트 컨셉"></p>
+<p>겨울 장터라면 따뜻함과 장비 안정성이 중요하고,<br>대학가 푸드 배틀이라면 메뉴 다양성과 고객 기억이 중요하고,<br>프랜차이즈 감사라면 여러 지역에서 같은 품질을 낼 수 있는지가 중요하다.</p>
+<p>이벤트에 실패해도 그냥 망하는 게 아니라,<br>무엇을 고쳐야 하는지 리포트로 남게 만들고 싶다.</p>
+<p>실패가 벌점이 아니라 다음 연구 과제가 되는 쪽.<br>그게 붕붕고랑 잘 맞는다.</p>
+<h2 id="지금-구현-방향"><a href="#지금-구현-방향" class="headerlink" title="지금 구현 방향"></a>지금 구현 방향</h2><p>처음에는 Unity 쪽으로 만지던 흔적이 많았는데,<br>현재는 웹을 먼저 활성 타깃으로 잡아두고 있다.</p>
+<p>이유는 단순하다.</p>
+<p>웹이 빠르게 검증하기 좋다.<br>브라우저에서 바로 띄우고,<br>테스트 돌리고,<br>UI 흐름을 확인하고,<br>나중에 Unity나 다른 엔진으로 옮길 때도<br>게임 규칙만 따로 가져가기 쉽다.</p>
+<p>그래서 구조는 대충 이런 느낌이다.</p>
+<p><img src="/img/posts/20260607-boongboonggo-intro/architecture.svg" alt="붕붕고 웹 우선 구현 구조"></p>
+<p>규칙과 경제, 주간 시뮬레이션은 TypeScript 도메인 로직으로 빼고,<br>React는 HUD와 팝업, 리포트 같은 텍스트 많은 화면을 맡고,<br>Phaser는 움직이는 필드와 오토바이 애니메이션을 맡는 식이다.</p>
+<p>이렇게 해두면 나중에 Unity로 가더라도<br>게임의 핵심 규칙을 다시 발명하지 않아도 된다.</p>
+<p>물론 말은 쉽다.<br>실제로는 또 여기저기 삐걱댈 거다.<br>근데 삐걱대는 부분이 보여야 고칠 수도 있으니까,<br>일단 웹에서 빠르게 한 판이 끝까지 돌아가게 만드는 게 목표다.</p>
+<h2 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h2><p>붕붕고는 아직 완성품은 아니다.</p>
+<p>하지만 이상하게 이 프로젝트는 이름부터 마음에 든다.<br>붕붕고.<br>뭔가 입에 붙는다.</p>
+<p>작은 오토바이가 붕어빵을 싣고 돌아다니고,<br>고객들이 자기 취향을 기억해달라고 하고,<br>나는 그걸 보고 연구와 직원을 다시 배치한다.</p>
+<p>생각보다 꽤 게임이 될 것 같다.</p>
+<p>일단 목표는 하나다.</p>
+<p>24주 캠페인을 실제로 끝까지 돌려보고,<br>마지막에 이런 문장을 보는 것.</p>
+<p>“이번 판의 붕붕고는 따끈신속 운영자였습니다.”</p>
+<p>혹은,</p>
+<p>“초개인화 붕붕고 대표.”</p>
+<p>이런 엔딩이 나오면 꽤 뿌듯할 듯.</p>
+<p>아무튼 붕붕고는 계속 만들어볼 생각이다.<br>귀여운 척하면서 은근히 진지한 경영게임으로.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>붕붕고라는 게임을 만들고 있다</p><p><a href="https://poul.kr/2026/06/07/20260607-boongboonggo-intro/">https://poul.kr/2026/06/07/20260607-boongboonggo-intro/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>PouL</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2026-06-07</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2026-06-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Codex/">Codex</a><a class="link-muted mr-2" rel="tag" href="/tags/Game/">Game</a><a class="link-muted mr-2" rel="tag" href="/tags/BoongBoongGo/">BoongBoongGo</a><a class="link-muted mr-2" rel="tag" href="/tags/Unity/">Unity</a><a class="link-muted mr-2" rel="tag" href="/tags/Web/">Web</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/06/07/20260607-hermes-project-intro/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">에르메스 프로젝트 - 내 투자 운영실 만들기</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/06/06/20260606-codex-log-after-3-months/"><span class="level-item">코덱스 사용일지 - 3개월 공백기 동안 한 일들</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="waline-thread"><script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+const options = {"el":"#waline-thread","serverURL":"https://comments.poul.kr","meta":["nick"],"requiredMeta":["nick"],"login":"disable","wordLimit":500,"pageSize":10,"imageUploader":false,"highlighter":false,"texRenderer":false,"search":false,"reaction":false,"emoji":false,"turnstileKey":"0x4AAAAAAD3niZNbZU7wcpMV"};
+options.path = (window.location.pathname || '/').replace(/\/$/, '') || '/';
+init(options);</script></div></div></div></div><!--!--><div class="column column-right is-3-tablet is-3-desktop is-3-widescreen  order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#잡담"><span class="level-left"><span class="level-item">1</span><span class="level-item">잡담</span></span></a></li><li><a class="level is-mobile" href="#왜-하필-붕어빵-오토바이인가"><span class="level-left"><span class="level-item">2</span><span class="level-item">왜 하필 붕어빵 오토바이인가</span></span></a></li><li><a class="level is-mobile" href="#핵심은-돈보다-증거"><span class="level-left"><span class="level-item">3</span><span class="level-item">핵심은 돈보다 증거</span></span></a></li><li><a class="level is-mobile" href="#필드는-대시보드가-아니라-작은-회사처럼"><span class="level-left"><span class="level-item">4</span><span class="level-item">필드는 대시보드가 아니라 작은 회사처럼</span></span></a></li><li><a class="level is-mobile" href="#24주짜리-창업-캠페인"><span class="level-left"><span class="level-item">5</span><span class="level-item">24주짜리 창업 캠페인</span></span></a></li><li><a class="level is-mobile" href="#플레이-스타일도-남기고-싶다"><span class="level-left"><span class="level-item">6</span><span class="level-item">플레이 스타일도 남기고 싶다</span></span></a></li><li><a class="level is-mobile" href="#고객이-익명-숫자가-아니었으면"><span class="level-left"><span class="level-item">7</span><span class="level-item">고객이 익명 숫자가 아니었으면</span></span></a></li><li><a class="level is-mobile" href="#이벤트는-보너스가-아니라-공개-검증"><span class="level-left"><span class="level-item">8</span><span class="level-item">이벤트는 보너스가 아니라 공개 검증</span></span></a></li><li><a class="level is-mobile" href="#지금-구현-방향"><span class="level-left"><span class="level-item">9</span><span class="level-item">지금 구현 방향</span></span></a></li><li><a class="level is-mobile" href="#마무리"><span class="level-left"><span class="level-item">10</span><span class="level-item">마무리</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Chat/"><span class="level-start"><span class="level-item">Chat</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile" href="/categories/Economy/"><span class="level-start"><span class="level-item">Economy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Food/"><span class="level-start"><span class="level-item">Food</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/Food/%ED%8F%AC%ED%95%AD/"><span class="level-start"><span class="level-item">포항</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Game/"><span class="level-start"><span class="level-item">Game</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Project/"><span class="level-start"><span class="level-item">Project</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/"><span class="level-start"><span class="level-item">투자 기록</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2026/07/"><span class="level-start"><span class="level-item">7월 2026</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2026/06/"><span class="level-start"><span class="level-item">6월 2026</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2026/02/"><span class="level-start"><span class="level-item">2월 2026</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">11월 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">4월 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-07-16T12:49:00.000Z">2026-07-16</time></p><p class="title"><a href="/2026/07/16/20260716-kis-jue-downturn-review/">하락장에 쥬는 한 종목을 정리했다</a></p><p class="categories"><a href="/categories/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/07/15/20260715-paid-pro-codex-rhythm/"><img src="/img/posts/20260715-paid-pro-codex-rhythm/cover.svg" alt="100달러를 내고, 다시 코덱스를 켰다"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-15T13:51:14.000Z">2026-07-15</time></p><p class="title"><a href="/2026/07/15/20260715-paid-pro-codex-rhythm/">100달러를 내고, 다시 코덱스를 켰다</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/07/13/20260713-pro-d1-jue-sprint/"><img src="/img/posts/20260713-pro-d1-jue-sprint/cover.jpg" alt="프로 끝나기 하루 전, 쥬를 파파파팍 고치는 밤"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-13T12:27:09.000Z">2026-07-13</time></p><p class="title"><a href="/2026/07/13/20260713-pro-d1-jue-sprint/">프로 끝나기 하루 전, 쥬를 파파파팍 고치는 밤</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/07/11/20260711-gpt56-jue-expectation/"><img src="/img/posts/20260711-gpt56-jue-expectation/cover.svg" alt="GPT 5.6 이후, 쥬에게 다시 기대하는 것"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-11T06:16:30.000Z">2026-07-11</time></p><p class="title"><a href="/2026/07/11/20260711-gpt56-jue-expectation/">GPT 5.6 이후, 쥬에게 다시 기대하는 것</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/07/05/20260705-jue-purpose-reset/"><img src="/img/posts/20260705-jue-purpose-reset/cover.svg" alt="쥬를 다시 생각하는 날 - 돈보다 스트레스"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-05T01:49:14.000Z">2026-07-05</time></p><p class="title"><a href="/2026/07/05/20260705-jue-purpose-reset/">쥬를 다시 생각하는 날 - 돈보다 스트레스</a></p><p class="categories"><a href="/categories/Chat/">Chat</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Binance/"><span class="tag">Binance</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Blog/"><span class="tag">Blog</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BoongBoongGo/"><span class="tag">BoongBoongGo</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Chat/"><span class="tag">Chat</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Codex/"><span class="tag">Codex</span><span class="tag">16</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Economy/"><span class="tag">Economy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Food/"><span class="tag">Food</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Freqtrade/"><span class="tag">Freqtrade</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GPT-5-6/"><span class="tag">GPT-5.6</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Game/"><span class="tag">Game</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HERMES/"><span class="tag">HERMES</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HERMES-Jue/"><span class="tag">HERMES Jue</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Jue/"><span class="tag">Jue</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KIS/"><span class="tag">KIS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OpenAI/"><span class="tag">OpenAI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Persona/"><span class="tag">Persona</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pro/"><span class="tag">Pro</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tax/"><span class="tag">Tax</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TradeCraft/"><span class="tag">TradeCraft</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Unity/"><span class="tag">Unity</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Worklog/"><span class="tag">Worklog</span><span class="tag">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/"><span class="tag">투자 기록</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/"><span class="tag">투자자동화</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/"><span class="tag">포트폴리오</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8F%AC%ED%95%AD/"><span class="tag">포항</span><span class="tag">2</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a><p class="is-size-7"><span>&copy; 2026 PouL</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "/privacy/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><!--!--><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="입력 하세요..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"입력 하세요...","untitled":"(제목 없음)","posts":"포스트","pages":"페이지","categories":"카테고리","tags":"태그"});
+        });</script></body></html>
