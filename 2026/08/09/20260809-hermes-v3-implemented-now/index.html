@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#3273dc"><meta name="robots" content="index,follow"><title>HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치 - PouL</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="PouL"><meta name="msapplication-TileImage" content="/img/icon-192.png"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PouL"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="192x192" href="/img/icon-192.png"><link rel="apple-touch-icon" sizes="512x512" href="/img/icon-512.png"><meta name="description" content="2026년 8월 9일 기준 HERMES v3 쥬의 구현 상태를 정리한다. 세 시장의 데이터 경로, 백테스트 게이트, shadow 운전, HERMES.app 관제 화면과 아직 열지 않은 실주문 경계를 쉽게 설명한다."><meta property="og:type" content="blog"><meta property="og:title" content="HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치"><meta property="og:url" content="https://poul.kr/2026/08/09/20260809-hermes-v3-implemented-now/"><meta property="og:site_name" content="PouL"><meta property="og:description" content="2026년 8월 9일 기준 HERMES v3 쥬의 구현 상태를 정리한다. 세 시장의 데이터 경로, 백테스트 게이트, shadow 운전, HERMES.app 관제 화면과 아직 열지 않은 실주문 경계를 쉽게 설명한다."><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://poul.kr/img/posts/20260809-hermes-v3-implemented-now/jue-observation-workshop.png"><meta property="article:published_time" content="2026-08-09T12:12:00.000Z"><meta property="article:modified_time" content="2026-08-10T13:21:17.229Z"><meta property="article:author" content="PouL"><meta property="article:tag" content="Worklog"><meta property="article:tag" content="HERMES"><meta property="article:tag" content="투자자동화"><meta property="article:tag" content="Jue"><meta property="article:tag" content="백테스트"><meta property="article:tag" content="HERMES.app"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://poul.kr/img/posts/20260809-hermes-v3-implemented-now/jue-observation-workshop.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://poul.kr/2026/08/09/20260809-hermes-v3-implemented-now/"},"headline":"HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치","image":["https://poul.kr/img/posts/20260809-hermes-v3-implemented-now/jue-observation-workshop.png"],"datePublished":"2026-08-09T12:12:00.000Z","dateModified":"2026-08-10T13:21:17.229Z","author":{"@type":"Person","name":"PouL"},"publisher":{"@type":"Organization","name":"PouL","logo":{"@type":"ImageObject","url":"https://poul.kr/img/poul_letter.svg"}},"description":"2026년 8월 9일 기준 HERMES v3 쥬의 구현 상태를 정리한다. 세 시장의 데이터 경로, 백테스트 게이트, shadow 운전, HERMES.app 관제 화면과 아직 열지 않은 실주문 경계를 쉽게 설명한다."}</script><meta name="naver-site-verification" content="1952a8d7d5081448cd5118063be73194d9003046"><link rel="canonical" href="https://poul.kr/2026/08/09/20260809-hermes-v3-implemented-now/"><link rel="icon" href="/img/small_logo.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><!--!--><!--!--><!--!--><!--!--><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454862779387141" crossorigin="anonymous"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/rss2.xml" title="PouL" type="application/rss+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a><a class="navbar-item" href="/privacy">Privacy</a><a class="navbar-item" href="/contact">Contact</a><a class="navbar-item" href="/disclaimer">Disclaimer</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/posts/20260809-hermes-v3-implemented-now/jue-observation-workshop.png" alt="HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-9 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2026-08-09T12:12:00.000Z" title="8/9/2026, 9:12:00 PM">2026-08-09</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2026-08-10T13:21:17.229Z" title="8/10/2026, 10:21:17 PM">2026-08-10</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Project/">Project</a></span><span class="level-item">16분안에 읽기 (약 2438 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile">HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치</h1><div class="content"><p>지난 글에서는 백테스트의 마지막 하루를 맞추는 일을 썼다. 오늘은 그보다 조금 넓게, <strong>그래서 쥬가 지금 실제로 무엇을 할 수 있는 상태인지</strong>를 정리해 본다.</p>
+<p>한 줄로 말하면 이렇다.</p>
+<blockquote>
+<p><strong>쥬는 종목을 찍어 주는 자동매매 봇이 아니라, 자료를 읽고 검증되지 않은 판단에는 자본을 붙이지 않도록 만든 개인 운용 시스템이다.</strong></p>
+</blockquote>
+<p>이 글은 <code>2026-08-09 18:55 KST</code>의 HERMES v3 코드 스냅샷과 그때까지의 구현 기록을 기준으로 썼다. 계좌 잔고, 보유 종목, 실제 주문 정보는 넣지 않았다.</p>
+<p><img src="/img/posts/20260809-hermes-v3-implemented-now/jue-observation-workshop.png" alt="여러 시장의 정보를 읽되 안전 게이트 앞에서 멈춘 쥬의 작업실"></p>
+<span id="more"></span>
+
+<h2 id="먼저-쥬가-하려는-일"><a href="#먼저-쥬가-하려는-일" class="headerlink" title="먼저, 쥬가 하려는 일"></a>먼저, 쥬가 하려는 일</h2><p>예전 버전은 종목을 살펴보는 일부터 LLM에게 많이 맡겼다. 설명을 듣기에는 편했지만, 같은 날 같은 자료를 넣어도 결과를 완전히 재현하기 어렵다. 그러면 과거에 다시 돌려 검증하기도 어렵고, 왜 판단이 바뀌었는지도 추적하기 힘들다.</p>
+<p>v3에서는 순서를 뒤집었다.</p>
+<ol>
+<li>가격, 거래량, 리서치, 파생시장 자료는 프로그램이 같은 규칙으로 넓게 읽는다.</li>
+<li>그 결과를 과거 구간에서 다시 재생해, 비용을 빼고도 의미가 있는지 검사한다.</li>
+<li>그 다음에야 쥬가 “이번에는 관찰할 이유가 있는가”를 읽는다.</li>
+<li>검증 문턱을 통과하지 못하면 결론은 매수가 아니라 <code>shadow</code>, 즉 <strong>관찰만</strong>이다.</li>
+</ol>
+<p>LLM은 전 종목을 무작정 훑어 추천을 만드는 사람이 아니라, 이미 계산된 후보를 비판적으로 읽고 보수적으로 줄이는 쪽에 가깝다. 쥬의 역할도 “정답을 맞히기”보다, 내가 시장을 볼 때 불필요하게 흔들리지 않도록 근거와 반대 근거를 한곳에 모으는 쪽이다.</p>
+<h2 id="한-덩어리로-보지-않는-세-시장"><a href="#한-덩어리로-보지-않는-세-시장" class="headerlink" title="한 덩어리로 보지 않는 세 시장"></a>한 덩어리로 보지 않는 세 시장</h2><p>쥬는 한국 주식, 미국 주식, 코인 시장을 하나의 규칙으로 뭉개지 않는다. 통화, 거래 시간, 세금, 호가 단위, 데이터의 성격이 다르기 때문이다.</p>
+<table>
+<thead>
+<tr>
+<th>시장</th>
+<th>쥬가 주로 읽는 것</th>
+<th>따로 다루는 이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>한국 주식</td>
+<td>가격·거래량, 리서치 의견, 공시와 시장 분위기</td>
+<td>원화 기준 장 시간과 국내 시장 맥락이 중요하다.</td>
+</tr>
+<tr>
+<td>미국 주식</td>
+<td>달러 기준 가격과 거래소·세션 정보</td>
+<td>한국 장과 시간이 다르고, 환전·정산·세금의 규칙도 다르다.</td>
+</tr>
+<tr>
+<td>Binance 현물·선물</td>
+<td>가격·거래량, 펀딩비, 미결제약정 같은 파생 신호</td>
+<td>24시간 시장이라 하루의 끝과 위험 관리 기준도 따로 필요하다.</td>
+</tr>
+</tbody></table>
+<p>이 분리는 보기 좋게 탭을 나눈 정도가 아니다. 한국 주식의 기준을 코인 선물에 그대로 쓰거나, 미국 주식의 거래 시간을 국내장처럼 해석하는 실수를 코드 구조에서부터 피하려는 선택이다.</p>
+<p><img src="/img/posts/20260809-hermes-v3-implemented-now/hermes-jue-system-map.svg" alt="세 시장의 자료가 같은 관찰 원칙으로 모이되 각자의 규칙을 유지하는 흐름"></p>
+<h2 id="통과하지-못한-신호는-shadow에-남긴다"><a href="#통과하지-못한-신호는-shadow에-남긴다" class="headerlink" title="통과하지 못한 신호는 shadow에 남긴다"></a>통과하지 못한 신호는 <code>shadow</code>에 남긴다</h2><p>여기서 가장 중요한 기능은 화려한 매수 버튼이 아니라 <strong>게이트</strong>다.</p>
+<p>신호가 실제 자본에 가까워지려면, 과거 구간을 여러 조각으로 나누어 재생했을 때 표본이 충분해야 하고, 거래 비용을 빼고도 기대값이 양수여야 하며, 손익비와 일관성 같은 조건도 만족해야 한다. 과거 데이터를 고를 때 미리 알 수 없었던 정보를 섞지 않도록 기간 사이에 완충 구간을 두고, 실험을 너무 많이 돌려 우연히 좋은 결과 하나만 고르는 일도 기록한다.</p>
+<p>그래서 지금 보이는 후보 중에는 점수가 높아도 <code>shadow</code>인 것이 있다. 이것은 고장이 아니라, <strong>아직 자본을 붙일 근거가 부족하다</strong>는 뜻이다.</p>
+<p>지난번 코인 선물 전략 다섯 가지도 이 원칙으로 모두 관찰 단계에 남겼다. 마지막 하루의 데이터 증거가 맞지 않는 문제나 수익성 문턱이 남아 있었기 때문이다. 좋은 숫자 하나를 골라 통과시키는 대신, 불편한 근거가 하나라도 남으면 멈추는 쪽을 택했다.</p>
+<h2 id="이번에-생긴-것은-‘매매-화면’보다-‘운영-화면’"><a href="#이번에-생긴-것은-‘매매-화면’보다-‘운영-화면’" class="headerlink" title="이번에 생긴 것은 ‘매매 화면’보다 ‘운영 화면’"></a>이번에 생긴 것은 ‘매매 화면’보다 ‘운영 화면’</h2><p>이번 며칠 사이 가장 눈에 보이는 변화는 <code>HERMES.app</code>이다. 맥에서 켜 두는 작은 관제 앱인데, 처음에는 화면 설계와 가짜 데이터로만 확인하던 것을 이제 로컬 백엔드의 실제 운영 기록을 읽는 방식으로 연결했다.</p>
+<p>앱에는 다음 일곱 화면이 있다.</p>
+<table>
+<thead>
+<tr>
+<th>화면</th>
+<th>쉬운 설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Command</td>
+<td>지금 어떤 프로세스가 돌고 있는지 보고, 로그를 읽고, 필요하면 멈추는 곳</td>
+</tr>
+<tr>
+<td>Blocks</td>
+<td>주문과 포지션이 생겼을 때 어떤 상태로 쌓이는지 보는 원장 화면</td>
+</tr>
+<tr>
+<td>Alpha</td>
+<td>시장별 후보와 그 후보가 <code>shadow</code>인지 통과 상태인지 보는 곳</td>
+</tr>
+<tr>
+<td>Assets</td>
+<td>자산의 변화와 계좌별 요약을 보는 곳</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>하루 동안 무슨 판단과 예외가 있었는지 다시 읽는 일지</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>백테스트 통과 여부와 이후 관찰 결과를 비교하는 성적표</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>LLM 사용량과 거래 비용을 따로 보는 비용 화면</td>
+</tr>
+</tbody></table>
+<p>중요한 점은, 이 앱에 <strong>수동으로 매수·매도하는 화면은 일부러 없다는 것</strong>이다. 앱은 리모컨과 계기판에 가깝다. 시장을 읽는 프로세스와 손절을 지키는 가드 루프는 앱을 꺼도 따로 살아 있어야 하고, 앱에서 데몬을 멈추거나 비상 정지를 하려면 두 번 확인하는 절차를 거치게 만들었다.</p>
+<p>또 하나의 작은 원칙도 지켰다. 화면이 가짜 자료를 읽는 중이면 그 사실을 배너로 표시하고, 아직 주문·성과 원장이 없는 <code>shadow</code> 상태라면 빨간 오류처럼 꾸미지 않고 “아직 원장이 없음”이라는 이유를 보여 준다. 멋있어 보이는 빈 대시보드보다, 지금 무엇이 없고 왜 없는지를 알 수 있는 대시보드가 더 쓸모 있기 때문이다.</p>
+<h2 id="뒤에서-돌아가는-안전장치들"><a href="#뒤에서-돌아가는-안전장치들" class="headerlink" title="뒤에서 돌아가는 안전장치들"></a>뒤에서 돌아가는 안전장치들</h2><p>관제 화면 밖에도 몇 가지 기반 작업이 쌓였다.</p>
+<ul>
+<li>각 시장의 현재가를 따로 받아 가드 루프가 보호선을 확인할 수 있게 했다.</li>
+<li>주문이 생겼을 때 같은 요청을 두 번 보내지 않도록, 식별자와 변경 이력을 원장 형태로 남길 준비를 했다.</li>
+<li>실제 돈을 쓰지 않는 모의 왕복 경로를 만들어 주문·체결·정산이 연결되는 방식을 점검할 수 있게 했다.</li>
+<li>국내·미국·코인 관찰 프로세스를 분리하고, 운영 알림은 Telegram에서 받기만 하도록 단방향으로 만들었다. 메시지로 주문을 내리는 명령 기능은 넣지 않았다.</li>
+<li>미국 주식 쪽은 거래소 구분과 연장 세션을 별도 점검 대상으로 잡았다. ‘미국 주식도 된다’고 먼저 말하기보다 시간대와 주문 규칙을 맞추는 중이다.</li>
+</ul>
+<p>이런 변화는 겉으로는 느리게 보일 수 있다. 하지만 쥬의 목적이 수익률 숫자를 급하게 만드는 것이 아니라, 내가 시장을 대하는 과정에서 감정과 기억의 빈틈을 줄이는 것이라면 이 순서가 맞다고 생각한다.</p>
+<h2 id="아직-하지-않은-것"><a href="#아직-하지-않은-것" class="headerlink" title="아직 하지 않은 것"></a>아직 하지 않은 것</h2><p>이 글에서 가장 분명하게 남겨야 할 경계도 있다.</p>
+<ul>
+<li>현재 신호는 검증과 관찰을 중심으로 돌고 있으며, 실주문을 열었다는 뜻이 아니다.</li>
+<li>주문·성과 원장은 <code>shadow</code> 운전에서는 비어 있을 수 있다. 빈 화면을 실적이 없다는 말과 섞지 않는다.</li>
+<li>백테스트 통과 여부와 실제 성과는 다른 문제다. 과거에서 통과한 신호도 이후의 관찰 결과를 계속 따로 채점해야 한다.</li>
+<li>Telegram 알림과 앱의 제어 기능은 운영을 돕는 장치지, 투자 판단을 대신하는 권한이 아니다.</li>
+</ul>
+<p>결국 지금의 HERMES 쥬는 “돈을 알아서 벌어 주는 무언가”보다, <strong>자료를 빠뜨리지 않고 읽고, 근거가 모자라면 멈추며, 나중에 왜 그렇게 했는지 다시 볼 수 있게 하는 작은 운용실</strong>에 더 가깝다.</p>
+<p>이번 구현에서 가장 마음에 드는 것도 그래서다. 화면이 일곱 개가 되었지만, 어느 화면도 ‘지금 사라’고 재촉하지 않는다. 쥬는 일단 내가 판단을 잃지 않도록 옆자리를 지키는 쪽으로 만들어지고 있다.</p>
+<blockquote>
+<p>이 글은 개인 프로젝트의 개발 기록이며 투자 권유가 아니다. 언급한 시장·전략·기능은 매수·매도 추천이 아니며, 백테스트와 관찰 기록은 미래 성과를 보장하지 않는다.</p>
+</blockquote>
+</div><div class="article-licensing box"><div class="licensing-title"><p>HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치</p><p><a href="https://poul.kr/2026/08/09/20260809-hermes-v3-implemented-now/">https://poul.kr/2026/08/09/20260809-hermes-v3-implemented-now/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>PouL</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2026-08-09</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2026-08-10</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Worklog/">Worklog</a><a class="link-muted mr-2" rel="tag" href="/tags/HERMES/">HERMES</a><a class="link-muted mr-2" rel="tag" href="/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</a><a class="link-muted mr-2" rel="tag" href="/tags/Jue/">Jue</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8A%B8/">백테스트</a><a class="link-muted mr-2" rel="tag" href="/tags/HERMES-app/">HERMES.app</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/08/10/20260810-hermes-jue-kis-alpha-top20/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">HERMES 쥬의 KIS 국내장 Top 20: 점수표를 추천으로 읽지 않는 법</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/08/07/20260807-hermes-v3-backtest-last-day/"><span class="level-item">오늘의 HERMES v3: 쥬는 잘 나온 종목보다 마지막 하루를 먼저 고쳤다</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="waline-thread"><script type="module">import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+const options = {"el":"#waline-thread","serverURL":"https://comments.poul.kr","meta":["nick"],"requiredMeta":["nick"],"login":"disable","wordLimit":500,"pageSize":10,"imageUploader":false,"highlighter":false,"texRenderer":false,"search":false,"reaction":false,"emoji":false,"turnstileKey":"0x4AAAAAAD3niZNbZU7wcpMV"};
+options.path = (window.location.pathname || '/').replace(/\/$/, '') || '/';
+init(options);</script></div></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/poul_logo.jpg" alt="PouL"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">PouL</p><p class="is-size-6 is-block">PouL 블로그</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">35</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">7</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">35</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/robotjuhwan"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/rss2.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#먼저-쥬가-하려는-일"><span class="level-left"><span class="level-item">1</span><span class="level-item">먼저, 쥬가 하려는 일</span></span></a></li><li><a class="level is-mobile" href="#한-덩어리로-보지-않는-세-시장"><span class="level-left"><span class="level-item">2</span><span class="level-item">한 덩어리로 보지 않는 세 시장</span></span></a></li><li><a class="level is-mobile" href="#통과하지-못한-신호는-shadow에-남긴다"><span class="level-left"><span class="level-item">3</span><span class="level-item">통과하지 못한 신호는 shadow에 남긴다</span></span></a></li><li><a class="level is-mobile" href="#이번에-생긴-것은-‘매매-화면’보다-‘운영-화면’"><span class="level-left"><span class="level-item">4</span><span class="level-item">이번에 생긴 것은 ‘매매 화면’보다 ‘운영 화면’</span></span></a></li><li><a class="level is-mobile" href="#뒤에서-돌아가는-안전장치들"><span class="level-left"><span class="level-item">5</span><span class="level-item">뒤에서 돌아가는 안전장치들</span></span></a></li><li><a class="level is-mobile" href="#아직-하지-않은-것"><span class="level-left"><span class="level-item">6</span><span class="level-item">아직 하지 않은 것</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Chat/"><span class="level-start"><span class="level-item">Chat</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/categories/Economy/"><span class="level-start"><span class="level-item">Economy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Food/"><span class="level-start"><span class="level-item">Food</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/Food/%ED%8F%AC%ED%95%AD/"><span class="level-start"><span class="level-item">포항</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Game/"><span class="level-start"><span class="level-item">Game</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Project/"><span class="level-start"><span class="level-item">Project</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/"><span class="level-start"><span class="level-item">투자 기록</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><figure class="media-left"><a class="image" href="/2026/08/10/20260810-hermes-jue-kis-alpha-top20/"><img src="/img/posts/20260810-hermes-jue-kis-alpha-top20/scorecards-through-the-gate.png" alt="HERMES 쥬의 KIS 국내장 Top 20: 점수표를 추천으로 읽지 않는 법"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-08-10T13:22:56.000Z">2026-08-10</time></p><p class="title"><a href="/2026/08/10/20260810-hermes-jue-kis-alpha-top20/">HERMES 쥬의 KIS 국내장 Top 20: 점수표를 추천으로 읽지 않는 법</a></p><p class="categories"><a href="/categories/Project/">Project</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/08/09/20260809-hermes-v3-implemented-now/"><img src="/img/posts/20260809-hermes-v3-implemented-now/jue-observation-workshop.png" alt="HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-08-09T12:12:00.000Z">2026-08-09</time></p><p class="title"><a href="/2026/08/09/20260809-hermes-v3-implemented-now/">HERMES 쥬는 지금 어디까지 왔나: 추천보다 먼저, 관제와 안전장치</a></p><p class="categories"><a href="/categories/Project/">Project</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/08/07/20260807-hermes-v3-backtest-last-day/"><img src="/img/posts/20260807-hermes-v3-backtest-last-day/jue-last-complete-session.png" alt="오늘의 HERMES v3: 쥬는 잘 나온 종목보다 마지막 하루를 먼저 고쳤다"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-08-07T13:25:00.000Z">2026-08-07</time></p><p class="title"><a href="/2026/08/07/20260807-hermes-v3-backtest-last-day/">오늘의 HERMES v3: 쥬는 잘 나온 종목보다 마지막 하루를 먼저 고쳤다</a></p><p class="categories"><a href="/categories/Project/">Project</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/08/06/20260806-hermes-v3-research-notes/"><img src="/img/posts/20260806-hermes-v3-research-notes/jue-research-gate.png" alt="오늘의 HERMES v3: 쥬는 리포트를 읽고, 주문 문은 더 단단히 잠갔다"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-08-06T12:55:00.000Z">2026-08-06</time></p><p class="title"><a href="/2026/08/06/20260806-hermes-v3-research-notes/">오늘의 HERMES v3: 쥬는 리포트를 읽고, 주문 문은 더 단단히 잠갔다</a></p><p class="categories"><a href="/categories/Project/">Project</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2026/08/05/20260805-hermes-v3-shadow-now/"><img src="/img/posts/20260805-hermes-v3-shadow-now/jue-three-markets-observer.png" alt="HERMES v3 지금은? 쥬는 세 시장을 보고 있지만, 아직 손은 묶여 있다"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-08-05T13:00:00.000Z">2026-08-05</time></p><p class="title"><a href="/2026/08/05/20260805-hermes-v3-shadow-now/">HERMES v3 지금은? 쥬는 세 시장을 보고 있지만, 아직 손은 묶여 있다</a></p><p class="categories"><a href="/categories/Project/">Project</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2026/08/"><span class="level-start"><span class="level-item">8월 2026</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2026/07/"><span class="level-start"><span class="level-item">7월 2026</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2026/06/"><span class="level-start"><span class="level-item">6월 2026</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2026/02/"><span class="level-start"><span class="level-item">2월 2026</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">11월 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">4월 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Alpha/"><span class="tag">Alpha</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Binance/"><span class="tag">Binance</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Blog/"><span class="tag">Blog</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BoongBoongGo/"><span class="tag">BoongBoongGo</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Chat/"><span class="tag">Chat</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Claude/"><span class="tag">Claude</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Codex/"><span class="tag">Codex</span><span class="tag">17</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Economy/"><span class="tag">Economy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Food/"><span class="tag">Food</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Freqtrade/"><span class="tag">Freqtrade</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GPT-5-6/"><span class="tag">GPT-5.6</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Game/"><span class="tag">Game</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HERMES/"><span class="tag">HERMES</span><span class="tag">18</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HERMES-Jue/"><span class="tag">HERMES Jue</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HERMES-app/"><span class="tag">HERMES.app</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Jue/"><span class="tag">Jue</span><span class="tag">13</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KIS/"><span class="tag">KIS</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OpenAI/"><span class="tag">OpenAI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Persona/"><span class="tag">Persona</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pro/"><span class="tag">Pro</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Shadow/"><span class="tag">Shadow</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tax/"><span class="tag">Tax</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TradeCraft/"><span class="tag">TradeCraft</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Unity/"><span class="tag">Unity</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Worklog/"><span class="tag">Worklog</span><span class="tag">20</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%92%88%EC%A7%88/"><span class="tag">데이터품질</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A6%AC%EC%84%9C%EC%B9%98/"><span class="tag">리서치</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/"><span class="tag">리팩토링</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8A%B8/"><span class="tag">백테스트</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/"><span class="tag">투자 기록</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/"><span class="tag">투자자동화</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/"><span class="tag">포트폴리오</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8F%AC%ED%95%AD/"><span class="tag">포항</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/poul_letter.svg" alt="PouL" height="28"></a><p class="is-size-7"><span>&copy; 2026 PouL</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "/privacy/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><!--!--><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="입력 하세요..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"입력 하세요...","untitled":"(제목 없음)","posts":"포스트","pages":"페이지","categories":"카테고리","tags":"태그"});
+        });</script></body></html>
