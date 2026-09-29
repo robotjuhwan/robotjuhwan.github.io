@@ -17,9 +17,9 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
       <category domain="https://poul.kr/tags/Binance/">Binance</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/Claude/">Claude</category>
       <pubDate>Tue, 29 Sep 2026 13:45:00 GMT</pubDate>
       <content:encoded>
@@ -34,9 +34,9 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <pubDate>Sun, 30 Aug 2026 13:40:00 GMT</pubDate>
       <content:encoded>
         <![CDATA[<p>이번 주말 두 마디를 했다.</p><blockquote><p>“내가 매번 뭔가 결정해야 하는 게 있어? 다 쥬한테 맡겼는데.”<br>“월요일도 그냥 네가 알아서 해.”</p></blockquote><p>둘 다 별거 아닌 말처럼 들리지만, HERMES 쥬 입장에서는 코드로 옮겨야 하는 문장이었다. 지금까지 쥬는 배분(자산을 어떤 비중으로 들고 갈지)을 <strong>제안</strong>만 했고, 그걸 실제로 반영하는 <strong>채택</strong> 버튼은 항상 내가 눌렀다. 매주 월요일마다.</p><p><img src="/img/posts/20260830-hermes-jue-auto-adopt/cover.svg" alt="월요일 채택을 쥬에게 위임하되 울타리를 남겨둔 작업대"></p><span id="more"></span><h2 id="왜-이게-필요했나"><a href="#왜-이게-필요했나" class="headerlink" title="왜 이게 필요했나"></a>왜 이게 필요했나</h2><p>HERMES 쥬가 하는 일 중 하나는 “지금 자산을 이런 비중으로 들고 가자”는 배분 판본을 만드는 것이다. 이건 새 종목을 사는 판단이 아니라, 이미 들고 있는 자산들의 목표 비중을 다시 맞추는 작업에 가깝다.</p><p>원래 설계(내부에서는 <code>[자-11]</code>이라고 부르는 작업 항목)는 “쥬가 제안하고 소유자가 채택한다”였다. 그런데 몇 주 굴려 보니 이게 반복되는 잡일이 됐다. 판본이 크게 이상하지 않은데도 매번 화면을 열어 확인 버튼을 눌러야 했다. <a href="/2026/07/05/20260705-jue-purpose-reset/">지난 7월 글</a>에서 쥬를 만든 이유가 “돈을 더 버는 기계”가 아니라 “투자 앞에서 내가 덜 혼자이게 하는 것”이라고 적었는데, 매주 반복되는 확인 버튼은 그 목적과 반대 방향이었다.</p><h2 id="무엇을-넘겼나-—-조건-4개"><a href="#무엇을-넘겼나-—-조건-4개" class="headerlink" title="무엇을 넘겼나 — 조건 4개"></a>무엇을 넘겼나 — 조건 4개</h2><p>그래서 이번 주말에 <code>allocation_auto_adopt</code>라는 스테이지를 새로 만들었다. 쥬가 낸 판본이 아래 네 조건을 <strong>전부</strong> 넘으면, 사람 없이 그대로 반영된다.</p><p><img src="/img/posts/20260830-hermes-jue-auto-adopt/decision-flow.svg" alt="안전조건 4개를 통과하면 자동 채택, 하나라도 못 넘으면 대기 제안으로 남는 흐름도"></p><ol><li><strong>판본이 지금 보유 중인 자산을 전부 덮는가.</strong> 판본에 이름이 없는 보유 종목은 시스템이 “비중 0%”로 읽어서 전량 매도해 버릴 수 있다. 지금까지는 채택 전에 내가 눈으로 봐서 잡아냈던 실수인데, 자동이면 아무도 안 보고 지나간다. 그래서 이 조건이 가장 먼저다.</li><li><strong>배분을 나누는 축이 그대로인가.</strong> 자산군 단위(주식&#x2F;현금 같은 큰 덩어리)로 나눈 판본과 종목 단위로 나눈 판본은 항목 자체가 달라서 서로 비교할 수 없다. 축이 바뀌면 무조건 사람이 본다.</li><li><strong>목표 비중이 이전 판본에서 밴드 폭 안에서만 움직였는가.</strong> 밴드는 원래 “이 범위 안에서는 사고팔지 않는다”는, 이미 내가 정해둔 값이다. 새 목표가 그 범위를 벗어났다는 건 그냥 숫자가 갱신된 게 아니라 입장 자체가 바뀐 거라서, 그때는 사람이 봐야 한다고 판단했다.</li><li><strong>비교할 활성 판본이 있는가.</strong> 맨 처음 판본은 비교 대상이 없으니 당연히 사람이 본다.</li></ol><p>중요한 건 셋째 조건에 새로운 임계값을 넣지 않았다는 점이다. 만약 “몇 %까지는 자동”이라고 새 숫자를 하나 더 만들면, 그 숫자 자체가 나중에 마음대로 조정할 수 있는 손잡이가 된다. 대신 이미 있는 밴드 값을 그대로 재사용했다.</p><h2 id="막히면-거부가-아니라-보류"><a href="#막히면-거부가-아니라-보류" class="headerlink" title="막히면 거부가 아니라 보류"></a>막히면 거부가 아니라 보류</h2><p>조건을 하나라도 못 넘은 판본은 사라지지 않는다. 원장에 대기 제안으로 남아서 내가 직접 보고 채택하면 된다. “자동으로 못 넘어간다”와 “판본 자체가 틀렸다”는 다른 문제이기 때문이다.</p><p>그리고 자동으로 채택된 판본은 원장의 승인자 칸에 사람 이름 대신 <code>auto:safe_refresh</code>라는 값이 남는다. 나중에 이 판본을 사람이 확인한 건지 기계가 넘긴 건지 한 칸만 보면 구분되게 만들었다.</p><h2 id="축-전환-하나는-따로-처리했다"><a href="#축-전환-하나는-따로-처리했다" class="headerlink" title="축 전환 하나는 따로 처리했다"></a>축 전환 하나는 따로 처리했다</h2><p>만들고 보니 막히는 지점이 하나 있었다. 지금 활성 판본은 자산군 축(주식 35% 같은 큰 단위)인데, 쥬가 새로 내는 제안은 종목 축이다. 그러면 조건 ②(축이 그대로인가)에서 항상 막힌다. 실제로 확인해 보니 쥬가 자산군으로 내면 조건 ①(보유 커버)에서, 종목으로 내면 조건 ②에서 걸려서 — 어느 쪽으로 내도 결국 사람을 불러야 하는 상태였다.</p><p>이건 “이번 한 번만” 넘어가야 하는 문제라서, 별도로 <strong>1회 무장</strong>이라는 걸 추가했다. 마지막 채택 이후로 아직 한 번도 자동 채택이 없었다면, 축이 다르다는 이유만으로는 한 번 막지 않는다. 기준을 메모리가 아니라 원장에 남은 “마지막 채택 시각”으로 잡아서, 프로그램이 재시작돼도 이 허용은 딱 한 번만 쓰인다. 그리고 축 전환이 한 번 일어나면 활성 판본 자체가 종목 축이 되므로, 이 예외 조건은 자연히 다시 쓸 일이 없어진다.</p><p>여기서 분명히 해두고 싶은 게 있다. 이 1회 무장이 끄는 건 <strong>축 비교 검사 하나뿐</strong>이다. 조건 ①(보유를 전부 덮는가)은 그대로 살아 있다. 판본이 지금 들고 있는 걸 다 담지 못하면, 축이 바뀌든 말든 여전히 막힌다. 조용히 전량 매도되는 사고를 막는 건 이 조건이고, 이건 무장 여부와 무관하게 항상 켜져 있어야 한다.</p><h2 id="그래도-남는-위험은-정직하게-적는다"><a href="#그래도-남는-위험은-정직하게-적는다" class="headerlink" title="그래도 남는 위험은 정직하게 적는다"></a>그래도 남는 위험은 정직하게 적는다</h2><p>축을 넘긴 뒤에는 이전 판본과 목표 비중을 밴드로 비교할 수 없다. 그러니 쥬가 낸 종목별 비중이 지금과 많이 달라도, 그 자체로는 자동 채택을 막지 못한다. 다만 자동 채택 경로는 새 종목을 여는 권한이 없다 — 이미 들고 있는 것의 비중을 줄이거나 늘리는 것까지만 할 수 있다. 그래서 최악의 경우도 “새로운 곳에 잘못 들어간다”가 아니라 “보유를 현금 쪽으로 과하게 줄인다” 정도다. 이 정도 규모는 “푼돈”이라고 내가 직접 정하고 위임한 범위다.</p><h2 id="지금-실제로-켜져-있나-—-그렇다"><a href="#지금-실제로-켜져-있나-—-그렇다" class="headerlink" title="지금 실제로 켜져 있나 — 그렇다"></a>지금 실제로 켜져 있나 — 그렇다</h2><p>기본값은 꺼짐이다. 스테이지를 새로 만들었다고 저절로 도는 게 아니라, 실행할 때 <code>--auto-adopt</code> 플래그를 따로 줘야 켜지고, 콘솔에는 지금 이게 켜져 있는지 배너로 찍힌다. 확인해보니 실제로 이번 주말부터 라이브 실행 스크립트에 이 플래그가 들어갔다 — 즉 이건 “만들어만 두고 안 켠” 기능이 아니라 지금 이 순간 실제로 돌고 있는 경로다.</p><p>다만 <strong>효과는 아직 관측하지 못했다.</strong> 이 글을 쓰는 시점은 일요일 밤이고, 국내 장은 열리지 않는다. 이 위임이 실제로 첫 번째 채택을 만들어내는 건 내일(월요일) 개장 이후다. 지금까지 확인한 건 회귀 테스트와 코드가 말하는 조건뿐이고, 실전에서 네 조건이 어떻게 걸리는지는 아직 한 번도 보지 못했다.</p><h2 id="이건-여전히-매수-버튼이-아니다"><a href="#이건-여전히-매수-버튼이-아니다" class="headerlink" title="이건 여전히 매수 버튼이 아니다"></a>이건 여전히 매수 버튼이 아니다</h2><p>혹시 오해할까 봐 적어둔다. 이번에 위임한 건 <strong>이미 보유한 자산의 비중을 다시 맞추는 판본 채택</strong>이지, 새 종목을 사는 판단이 아니다. 개별 종목을 새로 담는 문은 이 자동 경로에서 여전히 잠겨 있다.</p><p>실제로 오늘(2026-08-28 15:41 KST 스냅샷 기준, 지금 시점으로는 <code>stale</code> 상태) KIS 국내장 알파 화면을 다시 열어봐도 마찬가지였다. 상위 20개 후보가 떠 있고 각각 모멘텀·변동성 수축 같은 신호가 붙어 있지만, 전부 <code>gate_status: no_experiment</code>다. 검증을 통과한 신호가 하나도 없다는 뜻이고, 그러니 이 후보들 중 무엇도 자동으로든 수동으로든 새 매수로 이어지지 않는다. 이번 위임과 이 후보 목록은 서로 다른 문 앞에 서 있다.</p><h2 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h2><p>이번 작업을 하면서 계속 떠올린 기준은 하나였다. <em>“이게 내 결정 부담을 줄이는가, 아니면 위험을 감추는가.”</em> 채택 버튼을 누르는 매주의 잡일은 줄이고 싶었지만, 그 버튼이 막아주던 사고(판본에 없는 보유가 조용히 팔리는 것 같은)까지 같이 지워버리면 그건 위임이 아니라 그냥 눈을 감는 것이다.</p><p>그래서 이번엔 “전부 맡긴다”가 아니라 “이 네 조건 안에서만 맡긴다”로 선을 그었다. 다음에 볼 건 코드가 아니라 로그다 — 월요일 개장 뒤 실제로 대기 제안이 자동 채택으로 넘어가는지, 아니면 조건에 걸려 내 앞으로 다시 돌아오는지.</p><blockquote><p>이 글은 개인 프로젝트의 개발·운영 기록이며 투자 조언이나 매수·매도 추천이 아니다. 실제 계좌 잔고, 보유 종목, 주문 내역은 다루지 않는다.</p></blockquote>]]>
@@ -49,9 +49,9 @@
       <author>PouL</author>
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/Alpha/">Alpha</category>
       <category domain="https://poul.kr/tags/Shadow/">Shadow</category>
       <pubDate>Thu, 27 Aug 2026 14:21:49 GMT</pubDate>
@@ -66,9 +66,9 @@
       <author>PouL</author>
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/Alpha/">Alpha</category>
       <category domain="https://poul.kr/tags/Shadow/">Shadow</category>
       <pubDate>Mon, 10 Aug 2026 13:22:56 GMT</pubDate>
@@ -84,8 +84,8 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8A%B8/">백테스트</category>
       <category domain="https://poul.kr/tags/HERMES-app/">HERMES.app</category>
       <pubDate>Sun, 09 Aug 2026 12:12:00 GMT</pubDate>
@@ -101,8 +101,8 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8A%B8/">백테스트</category>
       <category domain="https://poul.kr/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%92%88%EC%A7%88/">데이터품질</category>
       <pubDate>Fri, 07 Aug 2026 13:25:00 GMT</pubDate>
@@ -118,8 +118,8 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8A%B8/">백테스트</category>
       <category domain="https://poul.kr/tags/%EB%A6%AC%EC%84%9C%EC%B9%98/">리서치</category>
       <pubDate>Thu, 06 Aug 2026 12:55:00 GMT</pubDate>
@@ -135,9 +135,9 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
+      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/Claude/">Claude</category>
-      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <category domain="https://poul.kr/tags/%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8A%B8/">백테스트</category>
       <pubDate>Wed, 05 Aug 2026 13:00:00 GMT</pubDate>
       <content:encoded>
@@ -152,9 +152,9 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
+      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/Claude/">Claude</category>
-      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <category domain="https://poul.kr/tags/%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8A%B8/">백테스트</category>
       <pubDate>Mon, 03 Aug 2026 12:45:00 GMT</pubDate>
       <content:encoded>
@@ -169,10 +169,10 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
+      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/Claude/">Claude</category>
       <category domain="https://poul.kr/tags/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/">리팩토링</category>
-      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <pubDate>Sun, 02 Aug 2026 12:10:00 GMT</pubDate>
       <content:encoded>
         <![CDATA[<p>HERMES v3를 다시 세운 뒤, 두 번째 큰 구현 차수에 들어왔다.</p><p>지난 글에서 “데이터부터 다시 쌓는다”고 적었는데, 이제는 그 위에 <strong>시장을 읽는 규칙</strong>을 올리기 시작했다. 그래도 쥬는 아직 매매하지 않는다. 지금 하고 있는 일은 매수 버튼을 누르게 만드는 일이 아니라, 그 버튼을 누르면 안 되는 날을 더 잘 구분하는 일에 가깝다.</p><p>이번 글은 <code>2026-08-02 20:50 KST</code>에 고정한 HERMES v3 코드 스냅샷을 기준으로 쓴다. 실시간 계좌·보유 종목·주문 정보는 넣지 않았다.</p><p><img src="/img/posts/20260802-hermes-v3-second-cycle/jue-and-owl-night-shift.png" alt="새벽 작업실에서 신호 타일을 정리하는 쥬와 부엉이"></p><span id="more"></span><h2 id="이번-차수는-무엇을-만드는-중인가"><a href="#이번-차수는-무엇을-만드는-중인가" class="headerlink" title="이번 차수는 무엇을 만드는 중인가"></a>이번 차수는 무엇을 만드는 중인가</h2><p>쉽게 말하면, 쥬가 종목 하나만 보고 “오를 것 같다”고 말하지 않도록 만드는 차수다.</p><p>종목의 추세나 거래량만 읽으면 시장 전체가 흔들리는 날에도 같은 목소리를 내기 쉽다. 그래서 이번에는 세 층을 따로 만들고 있다.</p><ol><li>종목 자체에서 나오는 기술 피처와 신호</li><li>시장 전체의 가격·변동성·폭을 읽는 가격 레짐</li><li>금리·달러·변동성·리서치 발간 흐름을 읽는 매크로·서사 레짐</li></ol><p>여기서 <code>레짐</code>은 거창한 예측기가 아니다. 지금을 “상승 추세”, “하락 추세”, “횡보”, “변동성이 큰 시기”처럼 한 번 접어 부르는 시장 상태다. 나중에 신호를 평가할 때도, 같은 돌파 신호가 어느 날에는 의미 있고 어느 날에는 조심해야 하는지 설명하는 배경이 된다.</p><p><img src="/img/posts/20260802-hermes-v3-second-cycle/v3-phase2-weather-map.svg" alt="가격과 매크로와 리서치가 각각 시장의 날씨를 읽는 구조"></p><h2 id="1-종목-신호는-다섯-가지-하지만-전부-그림자다"><a href="#1-종목-신호는-다섯-가지-하지만-전부-그림자다" class="headerlink" title="1. 종목 신호는 다섯 가지, 하지만 전부 그림자다"></a>1. 종목 신호는 다섯 가지, 하지만 전부 그림자다</h2><p>이번에 만든 기본 신호는 다섯 가지다.</p><ul><li>추세가 이어지는 중 잠깐 눌린 자리를 보는 <code>trend_pullback</code></li><li>거래량을 동반해 경계를 넘는 <code>breakout_volume</code></li><li>밴드 바깥으로 과하게 밀렸는지를 보는 <code>mean_reversion_band</code></li><li>같은 시장 안에서 상대적으로 강한 흐름을 보는 <code>momentum_rank</code></li><li>변동성이 조여진 뒤 움직임을 준비하는 <code>volatility_contraction</code></li></ul><p>이름만 보면 당장 거래할 것 같지만, 지금은 아니다. 다섯 신호 모두 <strong>shadow 전용</strong>이다. 신호가 나도 시스템의 진입 자격은 여전히 <code>no_experiment</code>, 즉 아직 실험조차 끝나지 않은 상태로 남는다.</p><p>이 규칙을 둔 이유는 단순하다. 신호를 만들었다는 사실과, 신호가 비용을 빼고도 쓸 만하다는 사실은 전혀 다르기 때문이다. 후자는 다음 Phase 3의 워크포워드 백테스트와 비용 게이트에서 확인할 일이다.</p><p>또 하나는 기권이다. 필요한 값이 비었을 때는 애매하게 중립 점수를 주지 않고, “판단 불가”라는 사유를 남긴다. 예를 들어 충분한 장기 이동평균이 없는 신규 상장 종목은 신호를 억지로 내지 않는다. 아무 일도 없어서 신호가 없던 것과, 자료가 모자라서 말하지 못한 것은 다른 문장이다.</p><h2 id="2-가격-레짐은-‘지수만-오르는-날’을-추세라고-부르지-않는다"><a href="#2-가격-레짐은-‘지수만-오르는-날’을-추세라고-부르지-않는다" class="headerlink" title="2. 가격 레짐은 ‘지수만 오르는 날’을 추세라고 부르지 않는다"></a>2. 가격 레짐은 ‘지수만 오르는 날’을 추세라고 부르지 않는다</h2><p>가격 레짐은 세 가지를 같이 본다.</p><ul><li>지수 프록시의 빠른 이동평균과 느린 이동평균 관계</li><li>지난 1년 안에서 현재 변동성이 어느 위치인지</li><li>유니버스 안에서 50일 이동평균 위에 있는 종목 비율, 즉 시장의 폭</li></ul><p>흥미로운 규칙은 폭이다. 지수는 오르는데 실제로 오른 종목이 절반도 안 되면, 이 시스템은 그날을 자신 있게 상승 추세라고 부르지 않는다. 몇 개의 대형주만 지수를 끌어올리는 장과, 시장 전체가 같이 가는 장은 다르게 봐야 한다는 판단이다.</p><p>변동성이 지난 1년의 상위 20%에 들어오면 방향보다 변동성 상태를 먼저 본다. 반대로 필요한 값이 하나라도 없으면 <code>횡보</code>로 대충 접지 않고, 상태 자체를 계산하지 못했다고 남긴다. “횡보라서 조심”과 “모르니 조심”은 다른 이유니까.</p><h2 id="3-매크로와-리서치는-LLM이-아니라-먼저-숫자로-남긴다"><a href="#3-매크로와-리서치는-LLM이-아니라-먼저-숫자로-남긴다" class="headerlink" title="3. 매크로와 리서치는 LLM이 아니라, 먼저 숫자로 남긴다"></a>3. 매크로와 리서치는 LLM이 아니라, 먼저 숫자로 남긴다</h2><p>매크로 레짐은 미국 10년물, 장단기 금리차, 국고채 3년물, 달러인덱스, VIX, 유가, 원·달러 같은 7개 시리즈를 읽는다. 값 하나만 던지는 대신 지난 1년 백분위와 최근 변화량도 같이 붙인다.</p><p>여기서 중요한 건 이월 기록이다. 어떤 매크로 값은 매일 새로 나오지 않는다. 최신값을 이월해서 쓰되, 며칠 전 관측치인지도 같이 남긴다. 그래야 수집이 멈춘 값을 최신으로 착각하지 않는다.</p><p>리서치 쪽도 비슷하다. 증권사 보고서 본문을 즉석에서 AI에게 읽히는 대신, 우선 발간량과 의견 흐름을 센다. 기존에 모은 6,364건 가운데 62%는 특정 종목이 아니라 시장·섹터·매크로 이야기였다. 이 문서들은 개별 종목 목표주가를 억지로 뽑기보다, 시장에서 어떤 주제에 관심이 몰리는지 보는 데 쓰는 편이 자연스럽다.</p><p>다만 리서치 데이터의 실제 기간은 약 6개월뿐이다. 그래서 그 이전 시점에는 레짐 값을 만들지 않고 비워 둔다. 데이터가 없던 날을 조용한 날로 해석하면, 시작 직후의 관심 급증이 가짜 신호가 되기 때문이다.</p><h2 id="4-지금은-조금-빨라졌고-더-조심스러워졌다"><a href="#4-지금은-조금-빨라졌고-더-조심스러워졌다" class="headerlink" title="4. 지금은 조금 빨라졌고, 더 조심스러워졌다"></a>4. 지금은 조금 빨라졌고, 더 조심스러워졌다</h2><p>이번 차수의 실제 측정도 하나 남겨 둔다.</p><p>3개 시장을 합쳐 17,540개 심볼, 약 1,030만 행을 훑는 T0 전수 스캔은 신호 5종까지 포함해 <strong>33.12초</strong>가 걸렸다. 기준은 60초다. 처음에는 203초가 걸렸는데, 데이터 구조와 다양성 계산을 손봐서 줄였다.</p><p>속도는 자랑거리가 아니라 운영 조건이다. 매일 전체 시장을 한 번 훑는 작업이 너무 오래 걸리면, 아무리 좋은 규칙도 실제로는 늦은 어제의 판단이 된다.</p><p>그렇다고 빨라졌다고 바로 주문으로 연결하지는 않는다. 지금의 흐름은 아래처럼 중간 문이 하나 더 있다.</p><p><img src="/img/posts/20260802-hermes-v3-second-cycle/v3-phase2-gates.svg" alt="데이터에서 신호까지는 열렸지만 백테스트와 주문 문은 아직 잠긴 흐름"></p><h2 id="아직-만들지-않은-것"><a href="#아직-만들지-않은-것" class="headerlink" title="아직 만들지 않은 것"></a>아직 만들지 않은 것</h2><p>이번 글에서 가장 중요한 문장은 이것이다.</p><blockquote><p><strong>신호와 시장 상태가 생겼지만, 아직 성과가 증명된 전략은 없다.</strong></p></blockquote><p>다음 큰 작업은 같은 파이프라인을 과거 시간 위에서 다시 돌리는 이벤트 기반 백테스트다. 수수료와 세금, 생존 편향, 수정계수, 데이터가 실제로 존재했던 시점까지 모두 넣고도 기대값이 남는지 봐야 한다.</p><p>그래서 아직은 하지 않은 것들도 명확하다.</p><ul><li>신호 임계값을 과거 성과로 맞춰 보는 튜닝</li><li>성과가 좋아 보인다는 이유로 진입 권한을 주는 일</li><li>주문 API 호출</li><li>리서치가 부족한 구간을 그럴듯한 값으로 메우는 일</li></ul><p>이런 빈칸을 남기는 일이 느려 보일 수는 있다. 그래도 v2에서 느꼈던 복잡함은 대부분 “없는 사실을 있는 것처럼 이어 붙이는 순간” 커졌다. 이번에는 모르면 모른다고 남기고, 기권이면 기권이라고 적는 쪽을 선택하고 있다.</p><h2 id="오늘의-쥬는-매매자가-아니라-야간-관측자다"><a href="#오늘의-쥬는-매매자가-아니라-야간-관측자다" class="headerlink" title="오늘의 쥬는 매매자가 아니라 야간 관측자다"></a>오늘의 쥬는 매매자가 아니라 야간 관측자다</h2><p>그래서 오늘의 쥬는 차트를 보고 매수 버튼을 찾는 캐릭터라기보다, 새벽 작업실에서 신호 조각을 정리하는 관측자에 가깝다. 옆의 부엉이는 빨리 결론 내리지 말라는 감시자 정도로 두면 될 것 같다.</p><p>모델을 Claude로 바꾼다고 수익이 생기거나 구조가 저절로 정리되는 건 아니다. 그래도 이번 2차수에서는, 복잡한 시스템을 더 복잡하게 만들기보다 각 판단이 어디서 왔고 언제 기권했는지 설명할 수 있는 쪽으로 조금씩 가고 있다.</p><p>게시 전 이 스냅샷에서 전체 테스트, 의존성 경계 검사, Ruff 정적 검사와 포맷 검사를 실행했고 모두 통과했다. 테스트는 코드 규칙을 확인할 뿐, 미래 수익을 보장하지 않는다.</p><blockquote><p>이 글은 개발 기록이며 투자 권유가 아니다. HERMES v3는 아직 백테스트와 실행 게이트를 통과하지 않았고, 실제 투자 판단은 별도로 해야 한다.</p></blockquote>]]>
@@ -186,9 +186,9 @@
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
+      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <category domain="https://poul.kr/tags/Claude/">Claude</category>
       <category domain="https://poul.kr/tags/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/">리팩토링</category>
-      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <pubDate>Sat, 01 Aug 2026 13:20:00 GMT</pubDate>
       <content:encoded>
         <![CDATA[<p>HERMES v3를 다시 짓기 시작한 지 얼마 안 됐는데, 생각보다 바닥 공사가 꽤 멀리 왔다.</p><p>아직 매매를 다시 시작한 건 아니다. 오히려 그 반대다. 이번에는 주문이나 쥬의 말투보다 먼저, 나중에 결과가 마음에 안 들어도 원인을 다시 찾아갈 수 있는 데이터와 규칙부터 깔고 있다.</p><p>이 글은 <code>2026-08-01</code> 밤, 현재 작업 트리와 테스트 결과를 보고 적는 중간 보고서다. 계좌·인증값·실제 보유 종목·주문 정보는 적지 않는다.</p><p><img src="/img/posts/20260801-hermes-v3-progress/v3-status-room.svg" alt="HERMES v3 상태판"></p><span id="more"></span><h2 id="지금-어디까지-왔나"><a href="#지금-어디까지-왔나" class="headerlink" title="지금 어디까지 왔나"></a>지금 어디까지 왔나</h2><p>한 줄로 줄이면 이렇다.</p><blockquote><p><strong>v3는 매매 시스템이 아니라, 매매 시스템이 될 자격을 검증할 데이터 공장을 먼저 만들고 있다.</strong></p></blockquote><p>Phase 0의 구조 정리와 Phase 1a의 파이프라인 골격은 끝났다. 지금은 Phase 1, 그러니까 데이터 평면을 실제 값으로 채우는 구간이다. 바 데이터, 리서치 문서, 기업행동, 미국 주식 유니버스를 각각 따로 다루되, 나중에 하나의 백테스트에서 같은 시간 기준으로 만날 수 있게 하는 작업이다.</p><p>현재 Python 코드만 보면 운영 코드 52개 파일, 테스트 19개 파일로 구성돼 있다. 숫자 자체가 중요한 건 아니지만, 예전처럼 한 덩어리 안에서 기능을 계속 덧붙이는 대신 역할별 경계를 먼저 세우고 있다는 흔적은 된다.</p><h2 id="1-먼저-정리한-것은-“언제-알았는가”다"><a href="#1-먼저-정리한-것은-“언제-알았는가”다" class="headerlink" title="1. 먼저 정리한 것은 “언제 알았는가”다"></a>1. 먼저 정리한 것은 “언제 알았는가”다</h2><p>자동매매 쪽에서 제일 무서운 건 나중에 알게 된 정보를 과거 판단에 슬쩍 섞어 넣는 일이다. 결과는 좋아 보이는데 실제 당시에는 알 수 없었던 정보를 쓴 백테스트, 흔히 말하는 룩어헤드가 그렇게 생긴다.</p><p>그래서 v3의 데이터는 단순히 날짜만 저장하지 않는다.</p><ul><li>가격 바는 원주가와 수정계수를 분리한다.</li><li>리서치 문서는 발행일보다 <strong>우리 시스템이 실제로 볼 수 있었던 시각</strong>을 기준으로 삼는다.</li><li>기업행동은 발표 시각, 확인 가능 시각, 실제 효력일을 따로 둔다.</li><li>저장소 쓰기는 한 경로만 통과하게 하고, 단계별 결과는 성공·건너뜀·저하 상태를 남긴다.</li></ul><p>겉으로 보면 꽤 귀찮은 규칙이다. 하지만 이 귀찮음이 없으면 나중에 “왜 이 전략이 과거에서는 좋았지?”라는 질문에 답할 수 없다.</p><p><img src="/img/posts/20260801-hermes-v3-progress/v3-data-plane.svg" alt="시간을 거슬러 올라가지 않기 위한 데이터 흐름"></p><h2 id="2-가격-데이터는-실제로-쌓이기-시작했다"><a href="#2-가격-데이터는-실제로-쌓이기-시작했다" class="headerlink" title="2. 가격 데이터는 실제로 쌓이기 시작했다"></a>2. 가격 데이터는 실제로 쌓이기 시작했다</h2><p>가장 먼저 규모가 나온 곳은 Binance 쪽이다.</p><ul><li>3년 일봉·4시간봉·1시간봉 백필 완료</li><li>479개 심볼</li><li><strong>10,810,642행</strong></li><li>수집 후 품질 검사와 기존 데이터 교차 검증까지 통과</li></ul><p>매크로와 환율도 10개 시계열, 7,443개 관측치까지 따로 쌓았다. 이 값들도 그냥 차트 장식이 아니라, 나중에 시장 국면을 나누고 수익을 원화 기준으로 읽을 때 사용할 기반이다.</p><p>국내 주식은 욕심내서 빨리 받으려다 KRX 쪽에서 차단을 한 번 맞았다. 이건 숨길 일이 아니라 이번 구조에서 가장 중요한 학습이었다. 지금은 호출 간격 하한을 코드로 강제했고, 차단이나 레이트 제한이 오면 계속 밀어붙이지 않고 바로 멈추도록 바꿨다. 국내 데이터는 일부 세션만 확보된 상태이며, 재개 전까지는 무리해서 채우지 않는다.</p><p>빠르게 많이 받는 것보다, 다음날 다시 돌려도 데이터를 망가뜨리지 않는 쪽을 선택한 셈이다.</p><h2 id="3-리서치는-옮기면서-오염도-같이-걷어냈다"><a href="#3-리서치는-옮기면서-오염도-같이-걷어냈다" class="headerlink" title="3. 리서치는 옮기면서 오염도 같이 걷어냈다"></a>3. 리서치는 옮기면서 오염도 같이 걷어냈다</h2><p>v2에 있던 증권사 리서치 문서 6,270건과 문서-종목 연결 17,846건도 v3 평면으로 옮겼다. 단순 복사는 아니었다.</p><p>가장 큰 문제는 목표주가가 없는 문서를 <code>0</code>으로 저장하던 습관이었다. 실제로 3,749건, 거의 60%가 0이었다. 채권이나 산업 리포트는 애초에 목표주가가 없을 뿐인데, 이걸 숫자 0으로 취급하면 시스템은 “목표주가가 0원”이라고 오해한다.</p><p>v3에서는 모르는 값을 <code>NULL</code>로 두고, 0이 다시 들어오지 못하게 막았다. 리포트가 발행된 날과 우리가 수집해 읽을 수 있었던 날도 분리했다. 예전에 두 달 늦게 수집된 리포트가 있었는데, 발행일만 믿으면 그 두 달을 과거에 미리 알고 있었던 셈이 되기 때문이다.</p><p>그리고 모든 리포트를 곧바로 LLM에 넣는 방식도 멈췄다. 전량 6,270건으로 먼저 재보니 종목 리포트가 아닌 문서가 61%였고, 정규식으로 확실히 처리할 수 있는 문서까지 먼저 걷어내면 LLM 2단계로 넘어갈 것은 560건이었다. 월 기준 추정 토큰은 <strong>1,881만에서 168만으로 91.1%</strong> 줄었다.</p><p>모델을 더 많이 부르는 것보다, 모델에게 정말 판단이 필요한 문서만 넘기는 편이 더 낫다는 아주 단순한 결론이다.</p><h2 id="4-기업행동과-미국-주식도-비어-있던-자리를-채우는-중"><a href="#4-기업행동과-미국-주식도-비어-있던-자리를-채우는-중" class="headerlink" title="4. 기업행동과 미국 주식도 비어 있던 자리를 채우는 중"></a>4. 기업행동과 미국 주식도 비어 있던 자리를 채우는 중</h2><p>액면분할, 유상증자 같은 기업행동은 과거 가격을 읽을 때 빠지면 안 되는 정보다. v2에는 스키마만 있고 실제로 채우는 경로가 거의 없었다. v3에서는 DART 공시에서 사건을 수집하고, 거래소의 수정주가와 원주가 비율로 실제 조정계수를 확인하는 구조를 따로 만들었다.</p><p>다만 여기에도 아직 남은 일이 있다. DART 목록만으로는 유상증자의 배정 방식이나 정확한 효력일을 다 알 수 없어서, 상세 공시 보강과 KRX 재개 뒤의 수정계수 적재가 필요하다. 이 항목은 안 채워진 상태에서 백테스트를 통과 처리하면 안 된다.</p><p>미국 주식은 계획보다 규모가 커졌다. KIS 공식 종목 마스터를 실제로 받아 보니 백필 대상이 처음 예상한 약 5,800개가 아니라 <strong>12,665개</strong>였다. NASDAQ·NYSE·AMEX의 주식과 ETF를 합친 값이다.</p><p>그래서 미국 일봉 어댑터와 재개 가능한 백필 러너를 만들었다. 원주가를 받도록 명시해 분할 뒤에 과거 가격이 조용히 바뀌는 문제도 피한다. 주식을 ETF보다 먼저 받도록 순서를 정했고, 전체 3년 백필은 아직 시작 전이다. 대상이 두 배 넘게 커진 만큼, 표본 검증과 호출 한도 확인을 거쳐야 한다.</p><p><img src="/img/posts/20260801-hermes-v3-progress/v3-no-orders-yet.svg" alt="쌓인 기반과 아직 닫혀 있는 주문 버튼"></p><h2 id="그래서-지금-쥬는-무엇을-할-수-있나"><a href="#그래서-지금-쥬는-무엇을-할-수-있나" class="headerlink" title="그래서 지금 쥬는 무엇을 할 수 있나"></a>그래서 지금 쥬는 무엇을 할 수 있나</h2><p>아직은 사람처럼 종목을 보고 주문하는 쥬가 아니다.</p><p>지금의 v3는 데이터를 받아 저장하고, 이상한 행은 격리하고, 어느 데이터가 언제 들어왔는지 기록하고, 나중에 쓸 리서치 사실을 덜 오염된 형태로 정리하는 쪽에 가깝다.</p><p>아직 남은 큰 관문은 명확하다.</p><ol><li>국내·미국 데이터의 백필과 완결성 검증</li><li>로컬 알파 엔진과 시장 국면 분류</li><li>같은 파이프라인을 재생하는 이벤트 기반 백테스트</li><li>비용을 뺀 뒤에도 기대값이 남는지 확인하는 게이트</li><li>그 뒤에야 판단 계층과 주문 계층</li></ol><p>특히 실제 주문은 Phase 5 전까지 호출하지 않도록 막아 두었다. 지금 데이터가 많아 보인다고 바로 매매를 재개하면, v2에서 느꼈던 “왜 이런 결과가 나왔는지 모르겠다”로 금방 돌아갈 것 같다.</p><h2 id="이번에는-나쁜-소식도-구조-안에-남긴다"><a href="#이번에는-나쁜-소식도-구조-안에-남긴다" class="headerlink" title="이번에는 나쁜 소식도 구조 안에 남긴다"></a>이번에는 나쁜 소식도 구조 안에 남긴다</h2><p>이번 진행에서 마음에 드는 부분은 잘된 숫자만 쌓지 않는다는 점이다.</p><p>KRX 차단, Binance와 미국 유니버스의 생존 편향, 리서치의 짧은 과거 범위, 아직 비어 있는 기업행동 계수는 전부 계획서와 검증 대상에 남아 있다. 나중에 백테스트 결과가 좋아도 이 한계들을 무시하면 안 된다.</p><p>Claude로 다시 시작한 리팩토링의 결과가 더 좋을지는 아직 모른다. 다만 지금까지의 방향은 분명하다. 모델이 시스템을 대신 똑똑하게 만들어 주길 기다리기보다, 사람이 다시 이해할 수 있는 경계와 실패 기록을 먼저 만들어 두고 있다.</p><p>오늘은 “v3가 완성됐다”고 쓸 날은 아니다.</p><p>대신 <strong>이번에는 뼈대만 그려 둔 상태가 아니라, 실제 데이터를 얹고 실패한 경로까지 기록하기 시작했다</strong>고는 쓸 수 있겠다.</p><h2 id="현재-검증"><a href="#현재-검증" class="headerlink" title="현재 검증"></a>현재 검증</h2><p>게시 전 현재 코드 기준으로 전체 테스트, 의존성 경계 검사, Ruff 정적 검사와 포맷 검사를 실행했다. 모두 통과했다. 외부 데이터 전체 백필이나 실제 주문 실행은 이 검증에 포함하지 않았다.</p><blockquote><p>이 글은 개발 기록이며 투자 권유가 아니다. 시스템은 아직 백테스트와 실행 게이트를 통과하지 않았고, 실제 투자 판단은 별도로 해야 한다.</p></blockquote>]]>
@@ -204,9 +204,9 @@
       <author>PouL</author>
       <category domain="https://poul.kr/categories/Project/">Project</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
+      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <category domain="https://poul.kr/tags/Claude/">Claude</category>
       <category domain="https://poul.kr/tags/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/">리팩토링</category>
-      <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90%EC%9E%90%EB%8F%99%ED%99%94/">투자자동화</category>
       <pubDate>Sat, 01 Aug 2026 12:15:00 GMT</pubDate>
       <content:encoded>
         <![CDATA[<p><img src="/img/posts/20260801-hermes-v3-claude-restart/v3-restart-desk.svg" alt="낡은 제어실을 정리하고 새 청사진 앞에 앉은 쥬"></p><p>오늘 ChatGPT 구독을 해지했다. 그동안 GPT와 코덱스로 HERMES를 꽤 멀리까지 끌고 왔다. 화면도 만들고, 쥬의 말투도 붙이고, KIS와 바이낸스를 연결하고, 실패할 때마다 규칙을 덧댔다.</p><p>그런데 어느 순간부터는 고치는 속도보다 구조를 이해하는 속도가 더 느려졌다. 기능 하나를 만질 때마다 다른 곳의 예외와 오래된 실험이 같이 따라오고, “이게 왜 여기 있지”라는 질문이 먼저 나오는 상태. 열심히 만든 것이 틀렸다는 뜻은 아니지만, 계속 덧붙이는 방식으로는 내가 원하는 종류의 시스템이 되기 어렵다는 뜻은 분명했다.</p><p>그래서 이번에는 Claude를 새로 구독하고, 새 작업 환경에서 <strong>HERMES v3</strong>를 다시 시작한다. 이 글은 “어느 모델이 더 똑똑한가”에 대한 결론이 아니다. 오히려 모델이 바뀌어도 흔들리지 않아야 할 경계와 규칙을 먼저 세우는 기록이다.</p><blockquote><p>기준 시점: 2026년 8월 1일. v3 저장소의 Phase 0 구현과 테스트 결과를 바탕으로 썼다. 아직 v3는 실거래를 시작한 시스템이 아니라, 재작성의 기반을 검증하는 단계다.</p></blockquote><h2 id="왜-새로-시작하나"><a href="#왜-새로-시작하나" class="headerlink" title="왜 새로 시작하나"></a>왜 새로 시작하나</h2><p>v2는 많은 것을 할 수 있었다. 대신 너무 많은 것이 한곳에 쌓였다. Python 코드만 36만 줄이 넘고, 실행 진입점은 21개, 독립적으로 도는 러너는 14개였다. 한 달 동안 LLM을 17,715번 호출해 약 1억 6,900만 토큰을 썼다.</p><p>문제는 비용만이 아니었다. 종목 분석의 상당 부분이 LLM 호출에 기대고 있으면, 같은 조건을 다시 돌려도 같은 판단을 보장하기 어렵다. 재현하기 어렵다면 백테스트로 검증하기도 어렵고, 검증하지 못하면 “좋아 보이는 판단”과 “돈을 걸어도 되는 판단”을 나눌 수 없다.</p><p>실제 기록도 이 불편한 결론을 피하지 못했다. 표본이 쌓인 전략군에서 뚜렷한 양의 기대값을 증명하지 못했고, 만들어 둔 검증 장치도 실제 진입 경로에서 우회된 적이 있었다. 프롬프트를 더 길게 쓰거나 모델을 한 번 더 바꾸는 일로 해결할 문제가 아니다.</p><p><img src="/img/posts/20260801-hermes-v3-claude-restart/v3-boundaries.svg" alt="v2의 얽힌 흐름을 v3의 명시적 경계와 게이트로 다시 나누는 그림"></p><h2 id="v3에서-먼저-바꾸는-것"><a href="#v3에서-먼저-바꾸는-것" class="headerlink" title="v3에서 먼저 바꾸는 것"></a>v3에서 먼저 바꾸는 것</h2><p>v3의 첫 원칙은 단순하다. <strong>재현 가능해야 개선할 수 있다.</strong></p><p>종목을 넓게 훑는 일은 가능한 한 로컬의 결정론적인 분석 엔진이 맡는다. 같은 데이터와 같은 시점이면 같은 결과가 나와야 한다. LLM은 모든 종목을 매번 읽는 엔진이 아니라, 이벤트가 생겼을 때 포트폴리오 전체를 해석하는 판단 계층으로 줄인다.</p><p>여기서 Claude는 기본 판단 프로바이더가 된다. 다만 코드의 경계는 특정 모델에 묶지 않는다. 입력과 출력의 계약은 모델 바깥에 두고, Claude가 구조화된 결과를 내는지와 예산 안에서 동작하는지를 먼저 확인하는 식이다. 다음에 모델을 바꾸더라도 투자 규칙과 데이터 계층까지 다시 갈아엎지 않기 위해서다.</p><table><thead><tr><th>v2에서 불편했던 것</th><th>v3에서 바꾸는 방식</th></tr></thead><tbody><tr><td>종목 분석이 LLM 호출에 크게 의존</td><td>로컬 알파 엔진이 분석을 만들고, LLM은 필요한 판단만 담당</td></tr><tr><td>검증 장치가 있어도 진입 경로에서 우회 가능</td><td><code>enter</code>는 워크포워드 검증을 통과한 신호만 만들 수 있게 설계</td></tr><tr><td>여러 러너가 각자 타이머를 가짐</td><td>KIS와 Binance를 세 개의 명시적 스테이지 DAG로 정리</td></tr><tr><td>DB 연결 규칙이 모듈마다 다름</td><td>단일 SQLite 연결 팩토리로 WAL과 잠금 대기 규칙을 강제</td></tr></tbody></table><h2 id="Claude와-함께-시작한-첫날은-기능-추가가-아니었다"><a href="#Claude와-함께-시작한-첫날은-기능-추가가-아니었다" class="headerlink" title="Claude와 함께 시작한 첫날은 기능 추가가 아니었다"></a>Claude와 함께 시작한 첫날은 기능 추가가 아니었다</h2><p>첫날에 만든 것은 멋진 화면도, 새 매매 로직도 아니다. 계획과 계약, 그리고 그 계약을 어기기 어렵게 만드는 작은 기반이다.</p><p>우선 v2를 실제 데이터로 다시 감사했다. 무엇을 버리고 무엇을 가져갈지 정하려면 “아마 복잡할 것이다”가 아니라, 어떤 경로가 비용을 쓰고 어떤 기록이 성과 측정에 남아 있는지부터 알아야 한다. 그 뒤 Phase 0 계획, 데이터·알파·판단·실행의 경계, 그리고 쥬 페르소나의 역할을 문서로 분리했다.</p><p>구현으로는 SQLite 연결을 한 군데로 모았다. 새 데이터베이스는 WAL 모드와 잠금 대기 시간, 외래키 설정을 같은 규칙으로 열고, 다른 모듈이 직접 연결을 만들면 검사 단계에서 막힌다. 눈에 띄는 기능은 아니지만, 런타임이 길어질수록 이런 작은 규칙이 시스템의 성격을 결정한다.</p><p><img src="/img/posts/20260801-hermes-v3-claude-restart/v3-phase-zero.svg" alt="새 시스템을 세우기 전에 감사, 데이터 연결, 테스트 순서로 바닥을 다지는 Phase 0"></p><p>이 첫 기반은 단위 테스트 11개와 코드 검사, 포맷 검사, 모듈 의존성 검사까지 통과했다. 아직 “잘 굴러간다”는 말은 할 수 없지만, 적어도 어디까지가 공용 기반이고 무엇을 침범하면 안 되는지는 실행 도구가 확인한다.</p><h2 id="이번에는-무엇을-기대하나"><a href="#이번에는-무엇을-기대하나" class="headerlink" title="이번에는 무엇을 기대하나"></a>이번에는 무엇을 기대하나</h2><p>Claude를 구독했다고 수익률이 갑자기 좋아질 거라고 기대하지는 않는다. HERMES v3가 제대로 가는지 판단할 기준도 거기에 두지 않을 생각이다.</p><ol><li>같은 입력을 넣었을 때 같은 분석이 나오는가.</li><li>검증을 통과하지 못한 신호가 실거래로 새지 않는가.</li><li>비용과 실패 사유를 나중에 다시 설명할 수 있는가.</li><li>모델이나 UI를 바꿔도 데이터와 실행 안전 규칙은 그대로 남는가.</li></ol><p>이 네 가지가 먼저다. 통과한 전략이 하나도 없다는 결과도, 실자본을 계속 태우는 것보다 낫다. 이번 리팩토링은 뭔가를 더 많이 시키는 작업이 아니라, 모르는 것을 모른다고 적고, 확인한 것만 다음 단계로 넘기는 연습에 가깝다.</p><p>ChatGPT를 해지하고 Claude로 옮긴 일은 겉으로 보면 구독 서비스 하나를 바꾼 것뿐이다. 하지만 내게는 HERMES를 다시 이해할 수 있는 크기로 되돌리는 시작점이다. 모델은 새로울 수 있어도, 이번에는 구조가 먼저다.</p><blockquote><p>이 글은 개인 프로젝트의 개발 기록이며 투자 권유가 아니다. HERMES v3의 검증 결과와 실제 동작은 이후 구현과 측정에 따라 달라질 수 있다.</p></blockquote>]]>
@@ -221,8 +221,8 @@
       </description>
       <author>PouL</author>
       <category domain="https://poul.kr/categories/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
-      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
+      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/">포트폴리오</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
       <pubDate>Fri, 31 Jul 2026 12:10:00 GMT</pubDate>
@@ -239,8 +239,8 @@
       </description>
       <author>PouL</author>
       <category domain="https://poul.kr/categories/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
-      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
+      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/">포트폴리오</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
       <pubDate>Sat, 25 Jul 2026 00:30:00 GMT</pubDate>
@@ -257,8 +257,8 @@
       </description>
       <author>PouL</author>
       <category domain="https://poul.kr/categories/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
-      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
+      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/">포트폴리오</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
       <pubDate>Thu, 23 Jul 2026 11:45:00 GMT</pubDate>
@@ -276,9 +276,9 @@
       <category domain="https://poul.kr/tags/Worklog/">Worklog</category>
       <category domain="https://poul.kr/tags/Blog/">Blog</category>
       <category domain="https://poul.kr/tags/HERMES/">HERMES</category>
-      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
       <category domain="https://poul.kr/tags/Binance/">Binance</category>
+      <category domain="https://poul.kr/tags/Jue/">Jue</category>
       <pubDate>Fri, 17 Jul 2026 12:47:44 GMT</pubDate>
       <content:encoded>
         <![CDATA[<p>오늘은 서로 전혀 달라 보이는 두 군데에, 비슷한 종류의 빈칸을 만들었다.</p><p>하나는 이 블로그 아래의 댓글 창이다. 이제 누가 글을 읽고 남긴 말이 있다면, 그 말을 글 옆에 남길 수 있다.</p><p>다른 하나는 쥬 안의 빈칸이다. 쥬는 내가 주식과 코인을 볼 때 받는 스트레스를 조금 줄여 보려고 만드는 투자 동료다. 그런데 계좌에 실제로 있는 보유분이 쥬의 관리 블록에는 아직 들어오지 않은 경우가 있었다. 화면에 안 보인다고 해서 없어지는 것은 아닌데, 시스템은 그 애매한 상태를 꽤 쉽게 지나칠 수 있다.</p><p>둘 다 결국은 “모르는 것을 모른다고 남기는 자리”를 만드는 일에 가까웠다.</p><span id="more"></span><p><img src="/img/posts/20260717-comments-and-jue/cover.svg" alt="댓글과 쥬의 빈칸을 같은 화면에 놓은 그림"></p><h2 id="블로그-밑에-말-걸-수-있는-자리를-만들었다"><a href="#블로그-밑에-말-걸-수-있는-자리를-만들었다" class="headerlink" title="블로그 밑에 말 걸 수 있는 자리를 만들었다"></a>블로그 밑에 말 걸 수 있는 자리를 만들었다</h2><p>그동안 poul.kr은 글을 올리면 끝인 정적 블로그였다. 읽은 사람이 무슨 생각을 했는지 알 방법은 조회수 정도뿐이었다.</p><p>그래서 댓글은 블로그에 억지로 데이터베이스를 붙이는 식이 아니라, 댓글만 맡는 작은 서버를 따로 두는 형태로 붙였다. 글을 읽는 사람은 로그인 없이 닉네임만 적으면 된다. 대신 사람인지 확인하는 절차를 한 번 거치고, 같은 곳에서 짧은 시간 안에 연달아 남기는 댓글은 제한한다.</p><p>가입 화면을 통해 새 계정을 만드는 길은 닫아뒀다. 댓글은 로그인 서비스가 아니라 글 아래에서 가볍게 대화할 통로면 충분하다고 생각했기 때문이다. 댓글은 승인 대기 없이 먼저 보이고, 이상한 글이 보이면 내가 나중에 지우는 쪽으로 두었다.</p><p>이게 대단한 기능은 아니다. 그래도 블로그가 “내가 쓴 기록을 쌓아 두는 곳”에서 “누군가가 한 줄을 덧붙일 수도 있는 곳”으로 아주 조금 달라졌다.</p><h2 id="쥬가-모르는-보유분을-그냥-지나치지-않게"><a href="#쥬가-모르는-보유분을-그냥-지나치지-않게" class="headerlink" title="쥬가 모르는 보유분을 그냥 지나치지 않게"></a>쥬가 모르는 보유분을 그냥 지나치지 않게</h2><p>오늘 쥬 쪽에서 가장 중요하게 본 것은, 쥬가 직접 만든 관리 블록 밖에 있는 보유분이다.</p><p>예를 들어 계좌에는 분명 종목이 있는데, 쥬의 현재 관리 목록에는 없는 경우가 있다. 예전부터 들고 있던 종목일 수도 있고, 다른 흐름에서 들어온 보유분일 수도 있다. 이걸 쥬가 마음대로 새 매수로 해석하거나, 반대로 화면에서 못 본 척하면 둘 다 위험하다.</p><p>그래서 이제는 실제 계좌 수량과 쥬의 관리 블록을 대조해서, 남는 보유분이 있으면 먼저 <strong>주의가 필요한 항목</strong>으로 남긴다.</p><p>바로 주문을 넣지는 않는다. 먼저 그 종목만 따로 다시 조사하고, 충분한 근거가 모인 뒤에도 “이 수량을 이 역할로 관리하겠다”는 명시적인 채택 판단이 있어야 한다. 그 전에는 임의의 손절선을 만들거나, 자동으로 정리하지 않는다.</p><p>자료가 부족하거나 판단이 빠지면 그 상태도 사라지지 않는다. 위험 확인 대기 상태로 남기고, 잠시 뒤 다시 살핀다. 오늘 작업에서 마음에 드는 부분은 바로 여기다. 모르는 보유분을 억지로 아는 척하지 않는 것.</p><p><img src="/img/posts/20260717-comments-and-jue/jue-adoption-flow.svg" alt="관리 밖 보유분이 조사와 명시적 채택을 거쳐야만 관리 블록이 되는 흐름"></p><h2 id="리서치와-실행-사이에-남겨-둔-문장들"><a href="#리서치와-실행-사이에-남겨-둔-문장들" class="headerlink" title="리서치와 실행 사이에 남겨 둔 문장들"></a>리서치와 실행 사이에 남겨 둔 문장들</h2><p>쥬의 흐름도 조금 더 분명하게 나누는 중이다.</p><p>자료를 모으는 단계, 그 자료를 읽고 판단안을 만드는 단계, 실제로 실행 가능한지 다시 막아 보는 단계, 그리고 나중에 복기하는 단계다. 말로 쓰면 당연해 보이는데, 프로젝트가 커질수록 이 네 단계가 한 덩어리로 엉키기 쉽다.</p><p>이번에는 국내 주식 쪽의 리서치 순서도 다시 손봤다. 새 보유분처럼 빨리 확인해야 하는 것이 생기면 일반적인 리포트 대기열보다 먼저 살피고, 오래된 자료는 배경 기록으로 남기되 새 판단의 직접 근거로는 쓰지 않게 했다.</p><p>코인 쪽도 같은 방향으로 정리 중이다. 리서치 노트, 현재 관리 블록, 위험 제한, 실행 가능 여부를 한 화면에서 분리해서 보려는 작업이다. 화면이 화려해지는 것보다, 지금 무엇이 조사 중이고 무엇이 실제로 실행 가능한지 혼동하지 않는 것이 먼저다.</p><p>쥬가 어떤 판단안을 내더라도 마지막에는 현금, 수량, 중복 주문, 장 시간, 계좌 대조, 실행 권한, 중지 스위치 같은 안전장치를 다시 지나야 한다. 나는 쥬가 “사라”고 말하는 존재가 되기보다, <strong>왜 아직 하지 않는지</strong>를 설명하는 존재에 조금 더 가까워지면 좋겠다.</p><h2 id="댓글-창과-쥬가-비슷해-보인-이유"><a href="#댓글-창과-쥬가-비슷해-보인-이유" class="headerlink" title="댓글 창과 쥬가 비슷해 보인 이유"></a>댓글 창과 쥬가 비슷해 보인 이유</h2><p>오늘 만든 댓글 창도, 쥬의 보유분 처리도 결과만 보면 전혀 관계가 없다.</p><p>하나는 사람에게 말을 받는 기능이고, 다른 하나는 계좌와 판단 기록을 정리하는 기능이다.</p><p>그런데 둘 다 내가 혼자 결론을 닫지 않게 만드는 장치라는 점에서는 비슷했다. 블로그에는 “이 글을 읽고 나는 이렇게 생각했다”는 한 줄이 들어올 수 있고, 쥬에는 “이 보유분은 아직 제대로 이해하지 못했다”는 상태가 남는다.</p><p>요즘은 뭔가를 더 빨리 만들수록, 그 사이에 이런 빈칸을 남겨 두는 일이 더 중요하게 느껴진다. 코덱스로 큰 변경을 한꺼번에 밀어 넣을 수는 있다. 하지만 화면에 보이지 않는 보유분이나 설명되지 않은 판단까지 자동으로 정리되는 것은 아니다.</p><p>댓글은 아직 비어 있고, 쥬의 개선도 아직 작업 중이다. 그래도 오늘은 빈칸을 감추는 대신, 다음에 다시 볼 수 있는 자리로 바꿔 둔 날이었다.</p><blockquote><p>이 글은 개인 프로젝트의 작업 기록이며 투자 권유가 아니다. 쥬의 판단과 계좌 상태는 계속 바뀔 수 있고, 실제 투자 결정은 내가 직접 확인한다.</p></blockquote>]]>
@@ -293,8 +293,8 @@
       </description>
       <author>PouL</author>
       <category domain="https://poul.kr/categories/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
-      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/KIS/">KIS</category>
+      <category domain="https://poul.kr/tags/HERMES-Jue/">HERMES Jue</category>
       <category domain="https://poul.kr/tags/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/">포트폴리오</category>
       <category domain="https://poul.kr/tags/%ED%88%AC%EC%9E%90-%EA%B8%B0%EB%A1%9D/">투자 기록</category>
       <pubDate>Thu, 16 Jul 2026 12:49:00 GMT</pubDate>
